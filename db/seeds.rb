@@ -13,7 +13,7 @@ CATEGORY_DATA = [
   },
   {
     name: 'Food',
-    subcategories: ['Cafe/coffee', 'Food - meal out', 'Food - snacks' 'Food - friends', 'Food - other', 'Alcohol']
+    subcategories: ['Cafe/coffee', 'Food - meal out', 'Food - snacks', 'Food - friends', 'Food - other', 'Alcohol']
   },
   {
     name: 'Clothing',
@@ -45,4 +45,9 @@ if Category.none?
       Subcategory.create(name: sub, category: cat)
     end
   end
+end
+
+if User.none?
+  User.create(name: 'Ellen', password: 'password')
+  User.create(name: 'Ben', password: 'password')
 end

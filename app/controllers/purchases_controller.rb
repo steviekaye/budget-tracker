@@ -5,18 +5,28 @@ class PurchasesController < ApplicationController
     @categories = Category.all
   end
 
-  def show
-    @purchase = Purchase.find(params[:id])
-  end
+  def show; end
 
   def new; end
 
-  def edit
-    @purchase = Purchase.find(params[:id])
-  end
+  def edit; end
 
   def create
+    @categories = Category.all
     @purchase = Purchase.new(purchase_params)
-    @purchase.category = Subcategory.find(params[:subcategory_id])
+    @purchase.subcategory = Subcategory.find(params[:subcategory_id])
+    @purchase.user = User.find(params[:user_id])
+
+    @purchase.save
+
+    redirect_to purchases_path
+  end
+
+  def update; end
+
+  private
+
+  def purchase_params
+    params.require(:purchase).permit(:date, :description, :amount, :payee)
   end
 end

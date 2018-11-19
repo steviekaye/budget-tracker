@@ -31,8 +31,8 @@
   </p>
 
   <p>
-    <%= select_tag(:subcategory, grouped_options_for_select(@categories.map do |c|
-        [c.name, c.subcategories.map { |s| [s.name, s.id] } ]
+    <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c|
+        [c.name, c.subcategories.map { |s| [s.name, s.id] }]
         end), prompt: "Select one!") %>
   </p>
 
@@ -41,6 +41,12 @@
     <%= form.text_field :payee %>
   </p>
 
+  <p>
+      <%= radio_button_tag(:user_id, User.find_by(name: 'Ellen').id) %>
+      <%= label_tag(:user_ellen, "Ellen") %>
+      <%= radio_button_tag(:user_id, (User.find_by(name: 'Ben')).id) %>
+      <%= label_tag(:user_ben, "Ben") %>
+  </p>
 
   <p>
     <%= form.submit class: 'button' %>

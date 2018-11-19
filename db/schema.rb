@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2018_11_15_021931) do
   create_table "purchases", force: :cascade do |t|
     t.date "date"
     t.text "description"
-    t.float "amount"
+    t.decimal "amount", precision: 15, scale: 2
     t.bigint "user_id"
     t.bigint "subcategory_id"
-    t.string "Payee"
+    t.string "payee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subcategory_id"], name: "index_purchases_on_subcategory_id"
