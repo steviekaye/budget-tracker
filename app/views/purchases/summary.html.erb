@@ -1,0 +1,30 @@
+<%= render 'header' %>
+
+
+<p>
+  <%= "Total spending to date: " + number_to_currency(Purchase.all.to_a.map(&:amount).sum) %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= number_to_currency(Purchase.where(subcategory: category.subcategories).to_a.map(&:amount).sum) %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+
+<p>
+  <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c|
+      [c.name, [["All " + c.name, 'c' + c.id.to_s]] + c.subcategories.map { |s| [s.name, 's' + s.id.to_s] }]
+      end), prompt: "Select category") %>
+</p>

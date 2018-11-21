@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Purchase, type: :model do
-  context 'a purchase is valid with valid attributes' do
+  context 'when it has valid attributes' do
     it 'is valid' do
       purchase = FactoryBot.build(:purchase)
 
@@ -9,7 +9,7 @@ RSpec.describe Purchase, type: :model do
     end
   end
 
-  context 'a purchase is invalid with no date' do
+  context 'when a date is nil' do
     it 'is invalid' do
       purchase = FactoryBot.build(:purchase, date: nil)
       purchase.valid?
@@ -18,7 +18,7 @@ RSpec.describe Purchase, type: :model do
     end
   end
 
-  context 'a purchase is invalid with a negative amount' do
+  context 'when an amount is negative' do
     it 'is invalid' do
       purchase = FactoryBot.build(:purchase, amount: -1.5)
       purchase.valid?
@@ -27,7 +27,7 @@ RSpec.describe Purchase, type: :model do
     end
   end
 
-  context 'a purchase is invalid with a future date' do
+  context 'when a purchase has a future date' do
     it 'is invalid' do
       purchase = FactoryBot.build(:purchase, date: Date.tomorrow)
       purchase.valid?

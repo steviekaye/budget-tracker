@@ -17,12 +17,20 @@ class PurchasesController < ApplicationController
     @purchase.subcategory = Subcategory.find(params[:subcategory_id])
     @purchase.user = User.find(params[:user_id])
 
-    @purchase.save
-
-    redirect_to purchases_path
+    if @purchase.save
+      redirect_to purchases_path
+    else
+      render 'index'
+    end
   end
 
   def update; end
+
+  def summary
+    @categories = Category.all
+    @date_start = Purchase.minimum(:date)
+    @date_end = Date.today
+  end
 
   private
 
