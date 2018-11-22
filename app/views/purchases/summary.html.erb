@@ -2,7 +2,7 @@
 
 
 <p>
-  <%= "Total spending to date: " + number_to_currency(Purchase.all.to_a.map(&:amount).sum) %>
+  <%= "Total spending to date: " + number_to_currency(Purchase.where(:date => @date_start..@date_end).to_a.map(&:amount).sum) %>
 </p>
 
 <table>
@@ -16,15 +16,14 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= number_to_currency(Purchase.where(subcategory: category.subcategories).to_a.map(&:amount).sum) %>
+        <td><%= number_to_currency(Purchase.where(subcategory: category.subcategories, :date => @date_start..@date_end).to_a.map(&:amount).sum) %>
       </tr>
     <% end %>
     </tbody>
   </table>
 
-
 <p>
   <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c|
-      [c.name, [["All " + c.name, 'c' + c.id.to_s]] + c.subcategories.map { |s| [s.name, 's' + s.id.to_s] }]
+      [c.name, c.subcategories.map { |s| [s.name, s.id] }]
       end), prompt: "Select category") %>
 </p>
