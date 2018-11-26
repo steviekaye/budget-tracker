@@ -1,6 +1,3 @@
-<%= render 'header' %>
-
-
 <p>
   <%= "Total spending to date: " + number_to_currency(Purchase.where(:date => @date_start..@date_end).to_a.map(&:amount).sum) %>
 </p>
