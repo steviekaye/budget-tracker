@@ -1,0 +1,19 @@
+
+
+
+
+
+
+<% if @categories %>
+  <div class="columns">
+  <% @categories.each do |category| %>
+    <div class="column">
+      <p class="has-text-weight-bold is-size-4"><%= category.name %></p>
+      <br>
+      <% category.subcategories.each do |s|%>
+        <p><%= s.name  %></p>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+<% end %>

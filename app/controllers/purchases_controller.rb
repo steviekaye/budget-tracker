@@ -32,6 +32,10 @@ class PurchasesController < ApplicationController
     @date_end = Date.today
   end
 
+  def category
+    @categories = Category.all
+  end
+
   private
 
   def purchase_params
