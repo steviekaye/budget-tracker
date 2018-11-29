@@ -5,14 +5,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet">
   </head>
 
   <body>
-    <%= render 'layouts/navigation' %>
-    <%= yield %>
+    <div id="container">
+      <%= render 'layouts/navigation' %>
+      <div id="page-content">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

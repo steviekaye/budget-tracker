@@ -1,55 +1,52 @@
 <%= form_with model: @purchase, local: true do |form| %>
 
-  <% if @purchase.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@purchase.errors.count, "error") %>
-        prohibited this purchase from being saved:
-      </h2>
-      <ul>
-        <% @purchase.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% if @purchase.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@purchase.errors.count, "error") %>
+      prohibited this purchase from being saved:
+    </h2>
+    <ul>
+      <% @purchase.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
+<p>
+  <%= form.label :date %><br>
+  <%= form.date_field :date %>
+</p>
 
-  <p>
-    <%= form.label :date %><br>
-    <%= form.date_field :date %>
-  </p>
+<p>
+  <%= form.label :description %><br>
+  <%= form.text_field :description %>
+</p>
 
-  <p>
-    <%= form.label :description %><br>
-    <%= form.text_field :description %>
-  </p>
+<p>
+  <%= form.label :amount %><br>
+  <%= form.number_field :amount, class: :text_field, step: :any %>
+</p>
 
-  <p>
-    <%= form.label :amount %><br>
-    <%= form.number_field :amount, class: :text_field, step: :any %>
-  </p>
+<p>
+  <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c| [c.name, c.subcategories.map { |s| [s.name, s.id] }] end), prompt: "Select one!") %>
+</p>
 
-  <p>
-    <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c|
-        [c.name, c.subcategories.map { |s| [s.name, s.id] }]
-        end), prompt: "Select one!") %>
-  </p>
+<p>
+  <%= form.label :payee %><br>
+  <%= form.text_field :payee %>
+</p>
 
-  <p>
-    <%= form.label :payee %><br>
-    <%= form.text_field :payee %>
-  </p>
+<p>
+  <%= radio_button_tag(:user_id, User.find_by(name: 'Ellen').id) %>
+  <%= label_tag(:user_ellen, "Ellen") %>
+  <%= radio_button_tag(:user_id, (User.find_by(name: 'Ben')).id) %>
+  <%= label_tag(:user_ben, "Ben") %>
+</p>
 
-  <p>
-      <%= radio_button_tag(:user_id, User.find_by(name: 'Ellen').id) %>
-      <%= label_tag(:user_ellen, "Ellen") %>
-      <%= radio_button_tag(:user_id, (User.find_by(name: 'Ben')).id) %>
-      <%= label_tag(:user_ben, "Ben") %>
-  </p>
-
-  <p>
-    <%= form.submit class: 'button is-danger is-rounded' %>
-  </p>
+<p>
+  <%= form.submit class: 'button' %>
+</p>
 
 <% end %>

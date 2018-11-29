@@ -13,18 +13,24 @@
  *= require_tree .
  *= require_self
  */
-$danger: #BA55D3; // medium orchid
-$warning: #fff9a3; // pale lemon
 @import "bulma";
-
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-.navbar {
-      font-family: 'Inknut Antiqua', serif;
+body {
+  font-family: 'Proza Libre', sans-serif;
 }
 
-body {
-    font-family: 'Proza Libre', sans-serif;
-    background-color: lighten($warning, 15%);
+#container {
+  @media screen and (min-width: $tablet) {
+    max-width: $tablet;
+    margin: 0 auto;
+  }
+}
+
+#page-content {
+  padding: 1em;
+  @media screen and (min-width: $tablet) {
+    padding: 0.5em;
+  }
 }
