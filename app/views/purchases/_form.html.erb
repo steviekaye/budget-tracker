@@ -14,39 +14,55 @@
   </div>
 <% end %>
 
-<p>
-  <%= form.label :date %><br>
-  <%= form.date_field :date %>
-</p>
+<div class="field">
+  <%= form.label :date, class: "label" %>
+  <div class="control">
+    <%= form.date_field :date , class: "input" %>
+  </div>
+</div>
 
-<p>
-  <%= form.label :description %><br>
-  <%= form.text_field :description %>
-</p>
+<div class="field">
+  <%= form.label :description, class: "label" %>
+  <div class="control">
+    <%= form.text_field :description, class: "input" %>
+  </div>
+</div>
 
-<p>
-  <%= form.label :amount %><br>
-  <%= form.number_field :amount, class: :text_field, step: :any %>
-</p>
+<div class="field">
+  <%= form.label :amount, class: "label" %>
+  <div class="control">
+    <%= form.number_field :amount, class: "input", step: :any %>
+  </div>
+</div>
 
-<p>
-  <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c| [c.name, c.subcategories.map { |s| [s.name, s.id] }] end), prompt: "Select one!") %>
-</p>
+<div class="field">
+  <label class="label">Category</label>
+  <div class="control">
+    <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c| [c.name, c.subcategories.map { |s| [s.name, s.id] }] end), prompt: "Select one!", class: "select" ) %>
+  </div>
+</div>
 
-<p>
-  <%= form.label :payee %><br>
-  <%= form.text_field :payee %>
-</p>
+<div class="field">
+  <%= form.label :payee, class: "label" %>
+  <div class="control">
+    <%= form.text_field :payee, class: "input" %>
+  </div>
+</div>
 
-<p>
-  <%= radio_button_tag(:user_id, User.find_by(name: 'Ellen').id) %>
-  <%= label_tag(:user_ellen, "Ellen") %>
-  <%= radio_button_tag(:user_id, (User.find_by(name: 'Ben')).id) %>
-  <%= label_tag(:user_ben, "Ben") %>
-</p>
+<label class="label">Purchaser</label>
+<div class="field is-grouped">
+  <div class="control">
+    <%= radio_button_tag(:user_id, User.find_by(name: 'Ellen').id) %>
+    <%= label_tag(:user_ellen, "Ellen") %>
+  </div>
+  <div class="control">
+    <%= radio_button_tag(:user_id, (User.find_by(name: 'Ben')).id) %>
+    <%= label_tag(:user_ben, "Ben") %>
+  </div>
+</div>
 
-<p>
-  <%= form.submit class: 'button' %>
-</p>
+<div class="field">
+  <%= form.submit class: 'button is-dark' %>
+</div>
 
 <% end %>
