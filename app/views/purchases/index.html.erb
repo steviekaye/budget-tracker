@@ -44,7 +44,7 @@
       <% @purchases.order(:date).reverse_order.each do |purchase| %>
 
         <div class="mobile-table-equiv">
-          <div class="mobile-table-equiv-element">
+          <div class="mobile-table-equiv-element has-text-weight-bold">
             <div>
               <%= purchase.description %>
             </div>
@@ -71,6 +71,5 @@
         </div>
       <% end %>
     <% end %>
-    <div class="mobile-table-equiv"></div>
   </div>
 </div>

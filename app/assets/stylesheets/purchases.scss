@@ -22,12 +22,17 @@
 .mobile-table-equiv {
   display: flex;
   flex-direction: column;
-  border-top: 2px solid black;
+  border-top: 1px solid $grey-lighter;
   justify-content: space-between;
-}
+  padding: 0.5em;
 
-.mobile-table-equiv:nth-child(even) {
-  background-color: #f2f2f2;
+  &:last-child {
+    border-bottom: 1px solid $grey-lighter;
+  }
+
+  &:nth-child(even) {
+    background-color: $white-bis;
+  }
 }
 
 .mobile-table-equiv-element {
