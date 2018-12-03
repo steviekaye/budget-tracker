@@ -9,3 +9,28 @@
     margin: 0 auto;
   }
 }
+@media only screen and (min-width: 600px) {
+  .mobile-table-equiv {
+    display: none;
+  }
+
+  .mobile-table-equiv-element {
+    display: none;
+  }
+}
+
+.mobile-table-equiv {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid black;
+  justify-content: space-between;
+}
+
+.mobile-table-equiv:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mobile-table-equiv-element {
+  display: flex;
+  justify-content: space-between;
+}
