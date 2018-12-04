@@ -50,4 +50,5 @@ end
 if User.none?
   User.create(name: 'Ellen', password: 'password')
   User.create(name: 'Ben', password: 'password')
+  User.create(name: 'Both', password: 'password')
 end

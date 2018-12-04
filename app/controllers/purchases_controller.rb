@@ -15,7 +15,8 @@ class PurchasesController < ApplicationController
     @categories = Category.all
     @purchase = Purchase.new(purchase_params)
     @purchase.subcategory = Subcategory.find(params[:subcategory_id])
-    @purchase.user = User.find(params[:user_id])
+    @purchase.purchaser = User.find(params[:purchase][:purchaser_id])
+    @purchase.purchasee = User.find(params[:purchase][:purchasee_id])
 
     if @purchase.save
       redirect_to purchases_path

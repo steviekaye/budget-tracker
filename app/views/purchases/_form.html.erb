@@ -51,18 +51,28 @@
 
 <label class="label">Purchaser</label>
 <div class="field is-grouped">
+
+  <%= form.collection_radio_buttons( :purchaser_id, User.all, :id, :name) do |b| %>
   <div class="control">
-    <%= radio_button_tag(:user_id, User.find_by(name: 'Ellen').id) %>
-    <%= label_tag(:user_ellen, "Ellen") %>
+    <%= b.radio_button %>
+    <%= b.label %>
   </div>
-  <div class="control">
-    <%= radio_button_tag(:user_id, (User.find_by(name: 'Ben')).id) %>
-    <%= label_tag(:user_ben, "Ben") %>
-  </div>
+<% end %>
+</div>
+
+<label class="label">Purchasee</label>
+<div class="field is-grouped">
+
+<%= form.collection_radio_buttons( :purchasee_id, User.all, :id, :name) do |b| %>
+<div class="control">
+  <%= b.radio_button %>
+  <%= b.label %>
+</div>
+<% end %>
 </div>
 
 <div class="field">
-  <%= form.submit class: 'button is-dark' %>
+<%= form.submit class: 'button is-dark' %>
 </div>
 
 <% end %>

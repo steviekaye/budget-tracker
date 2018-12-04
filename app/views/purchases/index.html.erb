@@ -30,7 +30,7 @@
               <td><%= number_to_currency(purchase.amount) %></td>
               <td><%= purchase.payee %></td>
               <td><%= Subcategory.find(purchase[:subcategory_id]).name %></td>
-              <td><%= User.find(purchase[:user_id]).name %></td>
+              <td><%= User.find(purchase[:purchaser_id]).name %></td>
             </tr>
           <% end %>
         <% end %>
@@ -62,7 +62,7 @@
           </div>
           <div class="mobile-table-equiv-element">
             <div>
-              <%= User.find(purchase[:user_id]).name %>
+              <%= User.find(purchase[:purchaser_id]).name %>
             </div>
             <div>
               <%= Subcategory.find(purchase[:subcategory_id]).name %>
