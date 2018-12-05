@@ -19,6 +19,7 @@
           <th>Payee</th>
           <th>Category</th>
           <th>Purchaser</th>
+          <th>Purchasee</th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,7 @@
               <td><%= purchase.payee %></td>
               <td><%= Subcategory.find(purchase[:subcategory_id]).name %></td>
               <td><%= User.find(purchase[:purchaser_id]).name %></td>
+              <td><%= User.find(purchase[:purchasee_id]).name %></td>
             </tr>
           <% end %>
         <% end %>

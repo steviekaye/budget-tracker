@@ -1,8 +1,8 @@
 class Purchase < ApplicationRecord
   # belongs_to :user
   belongs_to :subcategory
-  has_one :purchaser, class_name: 'User', foreign_key: 'purchaser_id'
-  has_one :purchasee, class_name: 'User', foreign_key: 'purchasee_id'
+  belongs_to :purchaser, class_name: 'User', foreign_key: 'purchaser_id'
+  belongs_to :purchasee, class_name: 'User', foreign_key: 'purchasee_id'
   # has_many :users
 
   validates :date, presence: true
