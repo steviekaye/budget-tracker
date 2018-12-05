@@ -1,11 +1,11 @@
 <%= form_with model: @purchase, local: true do |form| %>
 
 <% if @purchase.errors.any? %>
-  <div id="error_explanation">
-    <h2>
+  <div id="error_explanation" class="content">
+    <p class="has-text-danger is-size-4">
       <%= pluralize(@purchase.errors.count, "error") %>
       prohibited this purchase from being saved:
-    </h2>
+    </p>
     <ul>
       <% @purchase.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

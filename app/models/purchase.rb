@@ -7,6 +7,8 @@ class Purchase < ApplicationRecord
   validates :amount, presence: true
   validates :payee, presence: true
   validates_numericality_of :amount, greater_than: 0.0
+  validates :user, presence: true
+  validates :subcategory, presence: true
 
   validate :date_cannot_be_in_the_future
 

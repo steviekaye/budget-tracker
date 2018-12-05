@@ -9,21 +9,23 @@
 <br>
 
 <div class='purchase-index'>
-  <div>
-    <table class="table is-bordered is-striped is-hidden-mobile">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Amount</th>
-          <th>Payee</th>
-          <th>Category</th>
-          <th>Purchaser</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if @purchases %>
-          <% @purchases.order(:date).reverse_order.each do |purchase| %>
+
+  <% if @purchases %>
+    <% if @purchases.exists? %>
+      <table class="table is-bordered is-striped is-hidden-mobile">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Payee</th>
+            <th>Category</th>
+            <th>Purchaser</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% @purchases.each do |purchase| %>
             <tr>
               <td><%= purchase.date.to_s %></td>
               <td><%= purchase.description %></td>
@@ -33,15 +35,16 @@
               <td><%= User.find(purchase[:user_id]).name %></td>
             </tr>
           <% end %>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
 
   <!-- write custom div class with flex -->
   <div class="level is-hidden-tablet">
     <% if @purchases %>
-      <% @purchases.order(:date).reverse_order.each do |purchase| %>
+      <% @purchases.each do |purchase| %>
 
         <div class="mobile-table-equiv">
           <div class="mobile-table-equiv-element has-text-weight-bold">
