@@ -10,35 +10,33 @@
 
 <div class='purchase-index'>
 
-  <% if @purchases %>
-    <% if @purchases.exists? %>
-      <table class="table is-bordered is-striped is-hidden-mobile">
-        <thead>
+  <% if @purchases&.any? %>
+    <table class="table is-bordered is-striped is-hidden-mobile">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Payee</th>
+          <th>Category</th>
+          <th>Purchaser</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% @purchases.each do |purchase| %>
           <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Payee</th>
-            <th>Category</th>
-            <th>Purchaser</th>
+            <td><%= purchase.date.to_s %></td>
+            <td><%= purchase.description %></td>
+            <td><%= number_to_currency(purchase.amount) %></td>
+            <td><%= purchase.payee %></td>
+            <td><%= Subcategory.find(purchase[:subcategory_id]).name %></td>
+            <td><%= User.find(purchase[:user_id]).name %></td>
           </tr>
-        </thead>
-        <tbody>
+        <% end %>
 
-          <% @purchases.each do |purchase| %>
-            <tr>
-              <td><%= purchase.date.to_s %></td>
-              <td><%= purchase.description %></td>
-              <td><%= number_to_currency(purchase.amount) %></td>
-              <td><%= purchase.payee %></td>
-              <td><%= Subcategory.find(purchase[:subcategory_id]).name %></td>
-              <td><%= User.find(purchase[:user_id]).name %></td>
-            </tr>
-          <% end %>
-
-        </tbody>
-      </table>
-    <% end %>
+      </tbody>
+    </table>
   <% end %>
 
   <!-- write custom div class with flex -->
