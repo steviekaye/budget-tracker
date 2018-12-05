@@ -1,0 +1,2 @@
+class PurchasesController < PurchasesController
+end

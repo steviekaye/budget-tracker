@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   resources :purchases do
   end
 
+  resources :category do
+  end
+
   root 'purchases#index'
 end
