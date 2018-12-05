@@ -2,7 +2,7 @@
 
 <% if @purchase.errors.any? %>
   <div id="error_explanation" class="content">
-    <p class="has-text-danger is-size-4">
+    <p class="has-text-danger has-text-weight-bold">
       <%= pluralize(@purchase.errors.count, "error") %>
       prohibited this purchase from being saved:
     </p>
