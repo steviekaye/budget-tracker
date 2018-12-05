@@ -9,7 +9,8 @@
 <br>
 
 <div class='purchase-index'>
-  <div>
+
+  <% if @purchases&.any? %>
     <table class="table is-bordered is-striped is-hidden-mobile">
       <thead>
         <tr>
@@ -23,27 +24,28 @@
         </tr>
       </thead>
       <tbody>
-        <% if @purchases %>
-          <% @purchases.order(:date).reverse_order.each do |purchase| %>
-            <tr>
-              <td><%= purchase.date.to_s %></td>
-              <td><%= purchase.description %></td>
-              <td><%= number_to_currency(purchase.amount) %></td>
-              <td><%= purchase.payee %></td>
-              <td><%= Subcategory.find(purchase[:subcategory_id]).name %></td>
-              <td><%= User.find(purchase[:purchaser_id]).name %></td>
-              <td><%= User.find(purchase[:purchasee_id]).name %></td>
-            </tr>
-          <% end %>
+
+        <% @purchases.order(:date).reverse_order.each do |purchase| %>
+          <tr>
+            <td><%= purchase.date.to_s %></td>
+            <td><%= purchase.description %></td>
+            <td><%= number_to_currency(purchase.amount) %></td>
+            <td><%= purchase.payee %></td>
+            <td><%= Subcategory.find(purchase[:subcategory_id]).name %></td>
+            <td><%= User.find(purchase[:purchaser_id]).name %></td>
+            <td><%= User.find(purchase[:purchasee_id]).name %></td>
+          </tr>
+
         <% end %>
+
       </tbody>
     </table>
-  </div>
+  <% end %>
 
   <!-- write custom div class with flex -->
   <div class="level is-hidden-tablet">
     <% if @purchases %>
-      <% @purchases.order(:date).reverse_order.each do |purchase| %>
+      <% @purchases.each do |purchase| %>
 
         <div class="mobile-table-equiv">
           <div class="mobile-table-equiv-element has-text-weight-bold">
