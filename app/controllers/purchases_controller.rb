@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def index
-    @purchases = Purchase.all
+    @purchases = Purchase.all.order(:date).reverse_order
     @purchase = Purchase.new
     @categories = Category.all
   end
@@ -14,8 +14,9 @@ class PurchasesController < ApplicationController
   def create
     @categories = Category.all
     @purchase = Purchase.new(purchase_params)
-    @purchase.subcategory = Subcategory.find(params[:subcategory_id])
-    @purchase.user = User.find(params[:user_id])
+
+    @purchase.subcategory = Subcategory.find(params[:subcategory_id]) if params[:subcategory_id].present?
+    @purchase.user = User.find(params[:user_id]) if params[:user_id].present?
 
     if @purchase.save
       redirect_to purchases_path
@@ -32,9 +33,13 @@ class PurchasesController < ApplicationController
     @date_end = Date.today
   end
 
+  def category
+    @categories = Category.all
+  end
+
   private
 
   def purchase_params
-    params.require(:purchase).permit(:date, :description, :amount, :payee)
+    params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory, :user)
   end
 end

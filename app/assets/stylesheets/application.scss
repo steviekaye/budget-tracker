@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+@import "bulma";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+body {
+  font-family: 'Proza Libre', sans-serif;
+}
+
+#container {
+  @media screen and (min-width: $tablet) {
+    max-width: $tablet;
+    margin: 0 auto;
+  }
+}
+
+#page-content {
+  padding: 1em;
+  @media screen and (min-width: $tablet) {
+    padding: 0.5em;
+  }
+}
+
+nav i {
+  margin-right: 0.5em;
+}
