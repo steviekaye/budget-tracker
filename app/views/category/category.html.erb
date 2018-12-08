@@ -1,0 +1,18 @@
+<h1 class="title">Categories</h1>
+
+<% if @categories %>
+  <div>
+    <% @categories.each do |category| %>
+      <h2 class="subtitle"><%= category.name %></h2>
+      <div class="buttons">
+        <% category.subcategories.each do |s|%>
+          <span class="button is-rounded"><%= s.name %></span>
+        <% end %>
+        <% @category = category %>
+          <%= render 'subcategory-form' %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= render 'form' %>

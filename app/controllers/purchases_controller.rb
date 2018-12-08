@@ -35,7 +35,6 @@ class PurchasesController < ApplicationController
 
   def category
     @categories = Category.all
-    @category = Category.new
   end
 
   private

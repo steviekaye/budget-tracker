@@ -1,2 +1,0 @@
-class PurchasesController < PurchasesController
-end

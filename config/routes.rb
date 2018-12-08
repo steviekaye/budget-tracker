@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   get 'purchases/index'
 
   get '/summary', to: 'purchases#summary'
-  get '/category', to: 'purchases#category'
+  get '/category', to: 'category#category'
 
   resources :purchases do
   end
 
-  resources :category do
+  resources :categories do
+    resources :subcategories
   end
 
   root 'purchases#index'
