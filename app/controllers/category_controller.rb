@@ -1,6 +1,5 @@
 class CategoryController < ApplicationController
   def create
-    @categories = Category.all
     @category = Category.new(category_params)
 
     if @category.save
@@ -10,9 +9,8 @@ class CategoryController < ApplicationController
     end
   end
 
-  def category
+  def index
     @categories = Category.all
-    # @category = Category.find(params[:id])
   end
 
   private

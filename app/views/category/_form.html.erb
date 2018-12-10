@@ -1,14 +1,14 @@
 <%= form_with model: @category, local: true do |form| %>
 
 <div class="field">
-  <%= form.label :name, class: "label" %>
-  <div class="control">
-    <%= form.text_field :name, class: "input" %>
-  </div>
-</div>
+  <div class="control category">
+    <%= form.text_field :name, class: "input", placeholder: "Create New Category" %>
 
-<div class="field">
-  <%= form.submit class: 'button is-dark' %>
+    <%= button_tag type: "submit", class: "button is-dark" do %>
+    <i class="fas fa-plus"></i>
+  <% end %>
+
+</div>
 </div>
 
 <% end %>

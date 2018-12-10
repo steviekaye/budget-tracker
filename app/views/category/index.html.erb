@@ -1,5 +1,7 @@
 <h1 class="title">Categories</h1>
 
+<%= render 'form' %>
+<br>
 <% if @categories %>
   <div>
     <% @categories.each do |category| %>
@@ -19,5 +21,3 @@
     <% end %>
   </div>
 <% end %>
-
-<%= render 'form' %>

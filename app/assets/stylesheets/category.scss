@@ -5,3 +5,12 @@
 .subcategory input {
   width: 132px;
 }
+
+.category input::placeholder {
+  opacity: 1;
+  color: dimgrey;
+}
+
+.category input {
+  width: 200px;
+}
