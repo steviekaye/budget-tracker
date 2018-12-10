@@ -25,15 +25,15 @@
       </thead>
       <tbody>
 
-        <% @purchases.order(:date).reverse_order.each do |purchase| %>
+        <% @purchases.each do |purchase| %>
           <tr>
             <td><%= purchase.date.to_s %></td>
             <td><%= purchase.description %></td>
             <td><%= number_to_currency(purchase.amount) %></td>
             <td><%= purchase.payee %></td>
-            <td><%= Subcategory.find(purchase[:subcategory_id]).name %></td>
-            <td><%= User.find(purchase[:purchaser_id]).name %></td>
-            <td><%= User.find(purchase[:purchasee_id]).name %></td>
+            <td><%= purchase.subcategory.name %></td>
+            <td><%= purchase.purchaser.name %></td>
+            <td><%= purchase.purchaser.name %></td>
           </tr>
 
         <% end %>
@@ -66,10 +66,10 @@
           </div>
           <div class="mobile-table-equiv-element">
             <div>
-              <%= User.find(purchase[:purchaser_id]).name %>
+              <%= purchase.purchaser.name %>
             </div>
             <div>
-              <%= Subcategory.find(purchase[:subcategory_id]).name %>
+              <%= purchase.subcategory.name %>
             </div>
           </div>
         </div>
