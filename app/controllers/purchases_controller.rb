@@ -14,9 +14,9 @@ class PurchasesController < ApplicationController
   def create
     @categories = Category.all
     @purchase = Purchase.new(purchase_params)
-
     @purchase.subcategory = Subcategory.find(params[:subcategory_id]) if params[:subcategory_id].present?
-    @purchase.user = User.find(params[:user_id]) if params[:user_id].present?
+    @purchase.purchaser = User.find(params[:purchase][:purchaser_id]) if params[:purchase][:purchaser_id].present?
+    @purchase.purchasee = User.find(params[:purchase][:purchasee_id]) if params[:purchase][:purchasee_id].present?
 
     if @purchase.save
       redirect_to purchases_path
@@ -40,6 +40,6 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory, :user)
+    params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory)
   end
 end

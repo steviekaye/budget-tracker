@@ -20,6 +20,7 @@
           <th>Payee</th>
           <th>Category</th>
           <th>Purchaser</th>
+          <th>Purchasee</th>
         </tr>
       </thead>
       <tbody>
@@ -30,9 +31,11 @@
             <td><%= purchase.description %></td>
             <td><%= number_to_currency(purchase.amount) %></td>
             <td><%= purchase.payee %></td>
-            <td><%= Subcategory.find(purchase[:subcategory_id]).name %></td>
-            <td><%= User.find(purchase[:user_id]).name %></td>
+            <td><%= purchase.subcategory.name %></td>
+            <td><%= purchase.purchaser.name %></td>
+            <td><%= purchase.purchaser.name %></td>
           </tr>
+
         <% end %>
 
       </tbody>
@@ -63,10 +66,10 @@
           </div>
           <div class="mobile-table-equiv-element">
             <div>
-              <%= User.find(purchase[:user_id]).name %>
+              <%= purchase.purchaser.name %>
             </div>
             <div>
-              <%= Subcategory.find(purchase[:subcategory_id]).name %>
+              <%= purchase.subcategory.name %>
             </div>
           </div>
         </div>
