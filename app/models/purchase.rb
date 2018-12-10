@@ -1,16 +1,13 @@
 class Purchase < ApplicationRecord
-  # belongs_to :user
   belongs_to :subcategory
   belongs_to :purchaser, class_name: 'User', foreign_key: 'purchaser_id'
   belongs_to :purchasee, class_name: 'User', foreign_key: 'purchasee_id'
-  # has_many :users
 
   validates :date, presence: true
   validates :description, presence: true
   validates :amount, presence: true
   validates :payee, presence: true
   validates_numericality_of :amount, greater_than: 0.0
-  validates :user, presence: true
   validates :subcategory, presence: true
 
   validate :date_cannot_be_in_the_future
