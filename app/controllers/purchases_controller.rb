@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def index
-    @purchases = Purchase.all
+    @purchases = Purchase.all.order(:date).reverse_order
     @purchase = Purchase.new
     @categories = Category.all
   end
@@ -40,6 +40,6 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase).permit(:date, :description, :amount, :payee)
+    params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory, :user)
   end
 end
