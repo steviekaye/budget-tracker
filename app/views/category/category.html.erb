@@ -6,13 +6,18 @@
       <h2 class="subtitle"><%= category.name %></h2>
       <div class="buttons">
         <% category.subcategories.each do |s|%>
-          <span class="button is-rounded"><%= s.name %></span>
-        <% end %>
-        <% @category = category %>
-          <%= render 'subcategory-form' %>
-        </div>
+          <span class="button is-rounded"><%= s.name %>
+            &nbsp;
+            <%= link_to category_subcategory_path(category, s), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete subcategory" do %>
+            <i class="fas fa-times has-text-dark"></i>
+          <% end %>
+        </span>
       <% end %>
-    </div>
-  <% end %>
+      <% @category = category %>
+        <%= render 'subcategory-form' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
-  <%= render 'form' %>
+<%= render 'form' %>

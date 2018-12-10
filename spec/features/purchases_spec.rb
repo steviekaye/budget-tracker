@@ -4,6 +4,7 @@ RSpec.feature 'Purchases', type: :feature do
   before (:all) do
     FactoryBot.create(:user, name: 'Ellen')
     FactoryBot.create(:user, name: 'Ben')
+    FactoryBot.create(:user, name: 'Both')
     FactoryBot.create(:subcategory)
   end
 
@@ -18,7 +19,8 @@ RSpec.feature 'Purchases', type: :feature do
       fill_in 'Amount', with: 3.0
       select 'MySubCategory', from: 'subcategory_id'
       fill_in 'Payee', with: 'Evil Dairy'
-      choose('user_id_1')
+      choose('purchase_purchaser_id_1')
+      choose('purchase_purchasee_id_1')
       click_on 'Create Purchase'
     end.to change(Purchase.all, :count).by(1)
   end
@@ -30,7 +32,8 @@ RSpec.feature 'Purchases', type: :feature do
       fill_in 'Amount', with: 3.0
       select 'MySubCategory', from: 'subcategory_id'
       fill_in 'Payee', with: 'Evil Dairy'
-      choose('user_id_1')
+      choose('purchase_purchaser_id_1')
+      choose('purchase_purchasee_id_1')
       click_on 'Create Purchase'
     end.to change(Purchase.all, :count).by(0)
 

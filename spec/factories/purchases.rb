@@ -4,7 +4,8 @@ FactoryBot.define do
     description { 'Avocado' }
     amount { 4.5 }
     payee { 'Evil Dairy' }
-    user { FactoryBot.build(:user, name: 'Ellen') }
+    purchaser { FactoryBot.build(:user, name: 'Ellen') }
+    purchasee { FactoryBot.build(:user, name: 'Both') }
     subcategory { FactoryBot.build(:subcategory, name: 'Food - flat') }
   end
 end
