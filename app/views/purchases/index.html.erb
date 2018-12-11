@@ -10,6 +10,8 @@
 
 <div class='purchase-index'>
 
+  <h3 class="title is-4">Your last five purchases</h3>
+
   <% if @purchases&.any? %>
     <table class="table is-bordered is-striped is-hidden-mobile">
       <thead>
@@ -25,7 +27,7 @@
       </thead>
       <tbody>
 
-        <% @purchases.each do |purchase| %>
+        <% @purchases.limit(5).each do |purchase| %>
           <tr>
             <td><%= purchase.date.to_s %></td>
             <td><%= purchase.description %></td>
@@ -45,7 +47,7 @@
   <!-- write custom div class with flex -->
   <div class="level is-hidden-tablet">
     <% if @purchases %>
-      <% @purchases.each do |purchase| %>
+      <% @purchases.limit(5).each do |purchase| %>
 
         <div class="mobile-table-equiv">
           <div class="mobile-table-equiv-element has-text-weight-bold">
