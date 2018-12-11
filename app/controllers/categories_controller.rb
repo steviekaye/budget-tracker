@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to category_path
+      redirect_to categories_path
     else
       render 'index'
     end
