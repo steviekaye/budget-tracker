@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'purchases/index'
 
   get '/summary', to: 'purchases#summary'
-  get '/category', to: 'category#index'
+  get '/category', to: 'categories#index'
 
   resources :purchases do
   end
