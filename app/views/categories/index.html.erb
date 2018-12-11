@@ -1,0 +1,23 @@
+<h1 class="title">Categories</h1>
+
+<%= render 'form' %>
+<br>
+<% if @categories %>
+  <div>
+    <% @categories.each do |category| %>
+      <h2 class="subtitle"><%= category.name %></h2>
+      <div class="buttons">
+        <% category.subcategories.each do |s|%>
+          <span class="button is-rounded"><%= s.name %>
+            &nbsp;
+            <%= link_to category_subcategory_path(category, s), method: :delete, data: { confirm: "Are you sure? #{s.name} will be removed as a subcategory from the purchases currently using it." }, title: "Delete subcategory" do %>
+            <i class="fas fa-times has-text-dark"></i>
+          <% end %>
+        </span>
+      <% end %>
+      <% @category = category %>
+        <%= render 'subcategory-form' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
