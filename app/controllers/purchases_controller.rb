@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def index
-    @purchases = Purchase.all.order(:date).reverse_order
+    @purchases = Purchase.all.order(:date).reverse_order.limit(5)
     @purchase = Purchase.new
     @categories = Category.all
   end
@@ -26,16 +26,6 @@ class PurchasesController < ApplicationController
   end
 
   def update; end
-
-  def summary
-    @categories = Category.all
-    @date_start = Purchase.minimum(:date)
-    @date_end = Date.today
-  end
-
-  def category
-    @categories = Category.all
-  end
 
   private
 

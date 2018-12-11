@@ -27,7 +27,7 @@
       </thead>
       <tbody>
 
-        <% @purchases.limit(5).each do |purchase| %>
+        <% @purchases.each do |purchase| %>
           <tr>
             <td><%= purchase.date.to_s %></td>
             <td><%= purchase.description %></td>
@@ -47,7 +47,7 @@
   <!-- write custom div class with flex -->
   <div class="level is-hidden-tablet">
     <% if @purchases %>
-      <% @purchases.limit(5).each do |purchase| %>
+      <% @purchases.each do |purchase| %>
 
         <div class="mobile-table-equiv">
           <div class="mobile-table-equiv-element has-text-weight-bold">

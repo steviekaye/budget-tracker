@@ -5,8 +5,7 @@
 <% if @categories %>
   <div>
     <% @categories.each do |category| %>
-      <h2 class="subtitle"><%= category.name %>
-      </h2>
+      <h2 class="subtitle"><%= category.name %></h2>
       <div class="buttons">
         <% category.subcategories.each do |s|%>
           <span class="button is-rounded"><%= s.name %>
