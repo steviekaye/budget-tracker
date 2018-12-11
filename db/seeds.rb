@@ -54,11 +54,11 @@ if User.none?
 end
 
 if Purchase.none?
-  Purchase.create(date: '2018-11-15', description: 'Avocado', amount: 4.5, payee: 'Evil Dairy', purchaser: User.find(1), purchasee: User.find(1), subcategory: Subcategory.find(8))
-  Purchase.create(date: '2018-11-14', description: 'Cup of soup', amount: 3.0, payee: 'Patels', purchaser: User.find(1), purchasee: User.find(1), subcategory: Subcategory.find(8))
-  Purchase.create(date: '2018-11-18', description: 'Chocolate', amount: 6.30, payee: 'Shalimar', purchaser: User.find(1), purchasee: User.find(3), subcategory: Subcategory.find(9))
-  Purchase.create(date: '2018-11-09', description: 'Tamarillo', amount: 2.0, payee: 'Fruit shoppe', purchaser: User.find(2), purchasee: User.find(3), subcategory: Subcategory.find(3))
-  Purchase.create(date: '2018-11-22', description: 'Socks', amount: 18.99, payee: 'Farmers', purchaser: User.find(2), purchasee: User.find(2), subcategory: Subcategory.find(12))
-  Purchase.create(date: '2018-11-09', description: 'Snapper top-up', amount: 20.0, payee: 'Evil Dairy', purchaser: User.find(2), purchasee: User.find(2), subcategory: Subcategory.find(16))
-  Purchase.create(date: '2018-11-22', description: 'Summer hat', amount: 23.00, payee: 'Paperbag Princess', purchaser: User.find(1), purchasee: User.find(1), subcategory: Subcategory.find(3))
+  Purchase.create(date: '2018-11-15', description: 'Avocado', amount: 4.5, payee: 'Evil Dairy', purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find(8))
+  Purchase.create(date: '2018-11-14', description: 'Cup of soup', amount: 3.0, payee: 'Patels', purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find(8))
+  Purchase.create(date: '2018-11-18', description: 'Chocolate', amount: 6.30, payee: 'Shalimar', purchaser: User.first, purchasee: User.third, subcategory: Subcategory.find(9))
+  Purchase.create(date: '2018-11-09', description: 'Tamarillo', amount: 2.0, payee: 'Fruit shoppe', purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find(3))
+  Purchase.create(date: '2018-11-22', description: 'Socks', amount: 18.99, payee: 'Farmers', purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find(12))
+  Purchase.create(date: '2018-11-09', description: 'Snapper top-up', amount: 20.0, payee: 'Evil Dairy', purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find(16))
+  Purchase.create(date: '2018-11-22', description: 'Summer hat', amount: 23.00, payee: 'Paperbag Princess', purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find(3))
 end
