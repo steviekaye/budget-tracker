@@ -22,4 +22,9 @@ RSpec.feature 'Categories', type: :feature do
       click_on 'create_category'
     end.to change(Category.all, :count).by(0)
   end
+
+  after(:all) do
+    # before/after(:all) is not transactional; see https://www.relishapp.com/rspec/rspec-rails/docs/transactions
+    DatabaseCleaner.clean_with(:truncation)
+  end
 end

@@ -41,11 +41,15 @@ RSpec.feature 'Purchases', type: :feature do
   end
 
   scenario 'summarise all purchases' do
-    FactoryBot.create_list(:purchase, 3)
-    FactoryBot.create(:purchase, description: 'Beer', amount: 7.30, subcategory: FactoryBot.build(:subcategory, name: 'Alcohol'))
-
+    FactoryBot.create(:purchase, description: 'Beer', amount: 7.30, subcategory: FactoryBot.build(:subcategory, name: 'Alcohol', category: FactoryBot.build(:category, name: 'Food and drink')))
+    FactoryBot.create(:purchase, description: 'Socks', amount: 15.50, subcategory: FactoryBot.build(:subcategory, name: 'Clothing', category: FactoryBot.build(:category, name: 'Clothing')))
     click_link 'Summaries'
 
-    expect(page).to have_content '$20.80'
+    expect(page).to have_content '$22.80'
+  end
+
+  after(:all) do
+    # before/after(:all) is not transactional; see https://www.relishapp.com/rspec/rspec-rails/docs/transactions
+    DatabaseCleaner.clean_with(:truncation)
   end
 end

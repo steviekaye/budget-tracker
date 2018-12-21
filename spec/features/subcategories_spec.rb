@@ -45,4 +45,9 @@ RSpec.feature 'SubCategories', type: :feature do
       end
     end.to change(Subcategory.all, :count).by(-1)
   end
+
+  after(:all) do
+    # before/after(:all) is not transactional; see https://www.relishapp.com/rspec/rspec-rails/docs/transactions
+    DatabaseCleaner.clean_with(:truncation)
+  end
 end
