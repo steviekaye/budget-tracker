@@ -9,14 +9,14 @@ RSpec.feature 'Categories', type: :feature do
     visit categories_path
   end
 
-  scenario 'sucessfully create a new category' do
+  scenario 'successfully create a new category' do
     expect do
       fill_in 'name', with: 'Test Category'
       click_on 'create_category'
     end.to change(Category.all, :count).by(1)
   end
 
-  scenario 'unsucessfully create a new category' do
+  scenario 'unsuccessfully create a new category' do
     expect do
       fill_in 'name', with: 'Existing Category'
       click_on 'create_category'

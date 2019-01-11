@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Subcategory, type: :model do
   context 'when a subcategory name already exists within that category' do
     it 'is invalid' do
-      testcategory = FactoryBot.create(:category)
-      FactoryBot.create(:subcategory, category: testcategory)
-      subcategory = FactoryBot.build(:subcategory, category: testcategory)
+      test_category = FactoryBot.create(:category)
+      FactoryBot.create(:subcategory, category: test_category)
+      subcategory = FactoryBot.build(:subcategory, category: test_category)
       subcategory.valid?
 
       expect(subcategory.errors[:name]).to include('subcategory names are unique within that category')
@@ -14,10 +14,10 @@ RSpec.describe Subcategory, type: :model do
 
   context 'when a subcategory name already exists within another category' do
     it 'is valid' do
-      testcategory = FactoryBot.create(:category, name: 'One')
-      testcategory2 = FactoryBot.create(:category, name: 'Two')
-      FactoryBot.create(:subcategory, category: testcategory)
-      subcategory = FactoryBot.build(:subcategory, category: testcategory2)
+      test_category = FactoryBot.create(:category, name: 'One')
+      test_category2 = FactoryBot.create(:category, name: 'Two')
+      FactoryBot.create(:subcategory, category: test_category)
+      subcategory = FactoryBot.build(:subcategory, category: test_category2)
 
       expect(subcategory).to be_valid
     end

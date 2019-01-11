@@ -12,7 +12,7 @@ RSpec.feature 'Purchases', type: :feature do
     visit root_path
   end
 
-  scenario 'sucessfully create a new purchase' do
+  scenario 'successfully create a new purchase' do
     expect do
       fill_in 'Date', with: '2018-11-15'
       fill_in 'Description', with: 'Onion'
@@ -25,7 +25,7 @@ RSpec.feature 'Purchases', type: :feature do
     end.to change(Purchase.all, :count).by(1)
   end
 
-  scenario 'unsucessfully create a new purchase' do
+  scenario 'unsuccessfully create a new purchase' do
     expect do
       fill_in 'Date', with: Date.tomorrow
       fill_in 'Description', with: 'Onion'
@@ -38,14 +38,6 @@ RSpec.feature 'Purchases', type: :feature do
     end.to change(Purchase.all, :count).by(0)
 
     expect(page).to have_content "can't be in the future"
-  end
-
-  scenario 'summarise all purchases' do
-    FactoryBot.create(:purchase, description: 'Beer', amount: 7.30, subcategory: FactoryBot.build(:subcategory, name: 'Alcohol', category: FactoryBot.build(:category, name: 'Food and drink')))
-    FactoryBot.create(:purchase, description: 'Socks', amount: 15.50, subcategory: FactoryBot.build(:subcategory, name: 'Clothing', category: FactoryBot.build(:category, name: 'Clothing')))
-    click_link 'Summaries'
-
-    expect(page).to have_content '$22.80'
   end
 
   after(:all) do
