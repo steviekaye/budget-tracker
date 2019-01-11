@@ -11,7 +11,7 @@ RSpec.feature 'SubCategories', type: :feature do
     visit categories_path
   end
 
-  scenario 'sucessfully create a new subcategory' do
+  scenario 'successfully create a new subcategory' do
     expect do
       within('div#category_1') do
         fill_in 'subcategory_name', with: 'MySubCategory'
@@ -20,7 +20,7 @@ RSpec.feature 'SubCategories', type: :feature do
     end.to change(Subcategory.all, :count).by(1)
   end
 
-  scenario 'unsucessfully create a new subcategory where there is an existing category' do
+  scenario 'unsuccessfully create a new subcategory where there is an existing category' do
     expect do
       within('div#category_1') do
         fill_in 'subcategory_name', with: 'ExistingSubCategory'
@@ -29,7 +29,7 @@ RSpec.feature 'SubCategories', type: :feature do
     end.to change(Subcategory.all, :count).by(0)
   end
 
-  scenario 'sucessfully create a new subcategory with the same name as another subcategory in a different category' do
+  scenario 'successfully create a new subcategory with the same name as another subcategory in a different category' do
     expect do
       within('div#category_2') do
         fill_in 'subcategory_name', with: 'MySubCategory'
@@ -38,7 +38,7 @@ RSpec.feature 'SubCategories', type: :feature do
     end.to change(Subcategory.all, :count).by(1)
   end
 
-  scenario 'sucessfully delete a new subcategory' do
+  scenario 'successfully delete a new subcategory' do
     expect do
       within('div#category_1') do
         click_link 'Delete subcategory'

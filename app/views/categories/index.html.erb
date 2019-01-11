@@ -3,7 +3,11 @@
 <% if @categories %>
   <div class="line-spacing">
     <% @categories.each do |category| %>
-      <h2 class="subtitle"><%= category.name %></h2>
+      <h2 class="subtitle"><%= category.name %>
+        <%= link_to category_path(category), method: :delete, data: { confirm: "Are you sure? #{category.name} and all its subcategories will be removed the purchases currently using them." }, title: "Delete category" do %>
+          <i class="fas fa-times has-text-dark icon-padding"></i>
+        <% end %>
+      </h2>
       <%= div_for(category, class: "buttons") do %>
         <% category.subcategories.each do |s|%>
           <span class="button is-rounded"><%= s.name %>
