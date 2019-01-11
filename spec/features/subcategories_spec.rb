@@ -46,7 +46,7 @@ RSpec.feature 'SubCategories', type: :feature do
     end
   end
 
-  scenario 'sucessfully delete a new subcategory' do
+  scenario 'successfully delete a new subcategory' do
     expect do
       within('div#category_1') do
         click_link 'Delete subcategory'
