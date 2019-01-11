@@ -27,7 +27,7 @@ RSpec.feature 'Purchases', type: :feature do
 
   scenario 'unsuccessfully create a new purchase' do
     expect do
-      fill_in 'Date', with: Date.tomorrow
+      fill_in 'Date', with: Date.tomorrow + 2
       fill_in 'Description', with: 'Onion'
       fill_in 'Amount', with: 3.0
       select 'MySubCategory', from: 'subcategory_id'

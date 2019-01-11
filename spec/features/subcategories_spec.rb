@@ -11,31 +11,39 @@ RSpec.feature 'SubCategories', type: :feature do
     visit categories_path
   end
 
-  scenario 'successfully create a new subcategory' do
-    expect do
-      within('div#category_1') do
-        fill_in 'subcategory_name', with: 'MySubCategory'
-        click_on 'create_subcategory'
+  describe 'user creates a subcategory' do
+    context "when the subcategory name hasn't been used in that category" do
+      it 'is successfully created' do
+        expect do
+          within('div#category_1') do
+            fill_in 'subcategory_name', with: 'MySubCategory'
+            click_on 'create_subcategory'
+          end
+        end.to change(Subcategory.all, :count).by(1)
       end
-    end.to change(Subcategory.all, :count).by(1)
-  end
+    end
 
-  scenario 'unsuccessfully create a new subcategory where there is an existing category' do
-    expect do
-      within('div#category_1') do
-        fill_in 'subcategory_name', with: 'ExistingSubCategory'
-        click_on 'create_subcategory'
+    context 'when the subcategory name already exists within that category' do
+      it 'is not created' do
+        expect do
+          within('div#category_1') do
+            fill_in 'subcategory_name', with: 'ExistingSubCategory'
+            click_on 'create_subcategory'
+          end
+        end.to change(Subcategory.all, :count).by(0)
       end
-    end.to change(Subcategory.all, :count).by(0)
-  end
+    end
 
-  scenario 'successfully create a new subcategory with the same name as another subcategory in a different category' do
-    expect do
-      within('div#category_2') do
-        fill_in 'subcategory_name', with: 'MySubCategory'
-        click_on 'create_subcategory'
+    context 'when the subcategory name already exists within another category' do
+      it 'is successfully created' do
+        expect do
+          within('div#category_2') do
+            fill_in 'subcategory_name', with: 'MySubCategory'
+            click_on 'create_subcategory'
+          end
+        end.to change(Subcategory.all, :count).by(1)
       end
-    end.to change(Subcategory.all, :count).by(1)
+    end
   end
 
   scenario 'successfully delete a new subcategory' do

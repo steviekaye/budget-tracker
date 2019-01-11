@@ -29,7 +29,7 @@ RSpec.describe Purchase, type: :model do
 
   context 'when a purchase has a future date' do
     it 'is invalid' do
-      purchase = FactoryBot.build(:purchase, date: Date.tomorrow)
+      purchase = FactoryBot.build(:purchase, date: Date.tomorrow + 2)
       purchase.valid?
 
       expect(purchase.errors[:date]).to include("can't be in the future")
