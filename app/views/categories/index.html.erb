@@ -2,9 +2,9 @@
 <%= render 'form' %>
 <% if @categories %>
   <div class="line-spacing">
-    <% @categories.each do |category| %>
+    <% @categories.each_with_index do |category, idx| %>
       <h2 class="subtitle"><%= category.name %></h2>
-      <%= div_for(category, class: "buttons") do %>
+      <%= content_tag :div, class: 'buttons', id: "category_#{idx + 1}" do %>
         <% category.subcategories.each do |s|%>
           <span class="button is-rounded"><%= s.name %>
             <%= link_to category_subcategory_path(category, s), method: :delete, data: { confirm: "Are you sure? #{s.name} will be removed as a subcategory from the purchases currently using it." }, title: "Delete subcategory" do %>
