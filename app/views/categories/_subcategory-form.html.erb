@@ -1,12 +1,10 @@
 <%= form_with(model: [ @category, @category.subcategories.build ], local: true) do |form| %>
-
-<div class="field">
-  <div class="control subcategory">
-    <%= form.text_field :name, placeholder: "New Subcategory" %>
-
-    <%= button_tag type: "submit", class: "button is-small is-dark" do %>
-    <i class="fas fa-plus"></i>
-  <% end %>
-</div>
-</div>
+  <div class="field">
+    <div class="control subcategory">
+      <%= form.text_field :name, placeholder: "New Subcategory" %>
+      <%= button_tag type: "submit", class: "button is-small is-dark", id: "create_subcategory" do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </div>
+  </div>
 <% end %>

@@ -1,78 +1,66 @@
 <%= form_with model: @purchase, local: true do |form| %>
-
-<% if @purchase.errors.any? %>
-  <div id="error_explanation" class="content">
-    <p class="has-text-danger has-text-weight-bold">
-      <%= pluralize(@purchase.errors.count, "error") %>
-      prohibited this purchase from being saved:
-    </p>
-    <ul>
-      <% @purchase.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+  <% if @purchase.errors.any? %>
+    <div id="error_explanation" class="content">
+      <p class="has-text-danger has-text-weight-bold">
+        <%= pluralize(@purchase.errors.count, "error") %>
+        prohibited this purchase from being saved:
+      </p>
+      <ul>
+        <% @purchase.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :date, class: "label" %>
+    <div class="control">
+      <%= form.date_field :date , class: "input" %>
+    </div>
   </div>
-<% end %>
-
-<div class="field">
-  <%= form.label :date, class: "label" %>
-  <div class="control">
-    <%= form.date_field :date , class: "input" %>
+  <div class="field">
+    <%= form.label :description, class: "label" %>
+    <div class="control">
+      <%= form.text_field :description, class: "input" %>
+    </div>
   </div>
-</div>
-
-<div class="field">
-  <%= form.label :description, class: "label" %>
-  <div class="control">
-    <%= form.text_field :description, class: "input" %>
+  <div class="field">
+    <%= form.label :amount, class: "label" %>
+    <div class="control">
+      <%= form.number_field :amount, class: "input", step: :any %>
+    </div>
   </div>
-</div>
-
-<div class="field">
-  <%= form.label :amount, class: "label" %>
-  <div class="control">
-    <%= form.number_field :amount, class: "input", step: :any %>
+  <div class="field">
+    <label class="label">Category</label>
+    <div class="control">
+      <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c| [c.name, c.subcategories.map { |s| [s.name, s.id] }] end), prompt: "Select one!", class: "select" ) %>
+    </div>
   </div>
-</div>
-
-<div class="field">
-  <label class="label">Category</label>
-  <div class="control">
-    <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c| [c.name, c.subcategories.map { |s| [s.name, s.id] }] end), prompt: "Select one!", class: "select" ) %>
+  <div class="field">
+    <%= form.label :payee, class: "label" %>
+    <div class="control">
+      <%= form.text_field :payee, class: "input" %>
+    </div>
   </div>
-</div>
-
-<div class="field">
-  <%= form.label :payee, class: "label" %>
-  <div class="control">
-    <%= form.text_field :payee, class: "input" %>
+  <label class="label">Purchaser</label>
+  <div class="field is-grouped">
+    <%= form.collection_radio_buttons( :purchaser_id, User.all, :id, :name) do |b| %>
+      <div class="control">
+        <%= b.radio_button %>
+        <%= b.label %>
+      </div>
+    <% end %>
   </div>
-</div>
-
-<label class="label">Purchaser</label>
-<div class="field is-grouped">
-
-  <%= form.collection_radio_buttons( :purchaser_id, User.all, :id, :name) do |b| %>
-  <div class="control">
-    <%= b.radio_button %>
-    <%= b.label %>
+  <label class="label">Purchasee</label>
+  <div class="field is-grouped">
+    <%= form.collection_radio_buttons( :purchasee_id, User.all, :id, :name) do |b| %>
+      <div class="control">
+        <%= b.radio_button %>
+        <%= b.label %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-</div>
-
-<label class="label">Purchasee</label>
-<div class="field is-grouped">
-
-<%= form.collection_radio_buttons( :purchasee_id, User.all, :id, :name) do |b| %>
-<div class="control">
-  <%= b.radio_button %>
-  <%= b.label %>
-</div>
-<% end %>
-</div>
-
-<div class="field">
-<%= form.submit class: 'button is-dark' %>
-</div>
-
+  <div class="field">
+    <%= form.submit class: 'button is-dark' %>
+  </div>
 <% end %>

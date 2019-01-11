@@ -12,7 +12,7 @@ RSpec.feature 'Purchases', type: :feature do
     visit root_path
   end
 
-  scenario 'sucessfully create a new purchase' do
+  scenario 'successfully create a new purchase' do
     expect do
       fill_in 'Date', with: '2018-11-15'
       fill_in 'Description', with: 'Onion'
@@ -25,9 +25,9 @@ RSpec.feature 'Purchases', type: :feature do
     end.to change(Purchase.all, :count).by(1)
   end
 
-  scenario 'unsucessfully create a new purchase' do
+  scenario 'unsuccessfully create a new purchase' do
     expect do
-      fill_in 'Date', with: Date.tomorrow
+      fill_in 'Date', with: Date.tomorrow + 2
       fill_in 'Description', with: 'Onion'
       fill_in 'Amount', with: 3.0
       select 'MySubCategory', from: 'subcategory_id'
@@ -40,12 +40,8 @@ RSpec.feature 'Purchases', type: :feature do
     expect(page).to have_content "can't be in the future"
   end
 
-  scenario 'summarise all purchases' do
-    FactoryBot.create_list(:purchase, 3)
-    FactoryBot.create(:purchase, description: 'Beer', amount: 7.30, subcategory: FactoryBot.build(:subcategory, name: 'Alcohol'))
-
-    click_link 'Summaries'
-
-    expect(page).to have_content '$20.80'
+  after(:all) do
+    # before/after(:all) is not transactional; see https://www.relishapp.com/rspec/rspec-rails/docs/transactions
+    DatabaseCleaner.clean_with(:truncation)
   end
 end

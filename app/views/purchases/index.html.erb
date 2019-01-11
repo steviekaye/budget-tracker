@@ -1,17 +1,11 @@
 <h1 class="title">Purchases</h1>
-
 <div class="card">
   <div class="card-content">
     <%= render 'form' %>
   </div>
 </div>
-
-<br>
-
-<div class='purchase-index'>
-
+<div class='purchase-index line-spacing'>
   <h3 class="title is-4">Your last five purchases</h3>
-
   <% if @purchases&.any? %>
     <table class="table is-bordered is-striped is-hidden-mobile">
       <thead>
@@ -26,7 +20,6 @@
         </tr>
       </thead>
       <tbody>
-
         <% @purchases.each do |purchase| %>
           <tr>
             <td><%= purchase.date.to_s %></td>
@@ -37,18 +30,14 @@
             <td><%= purchase.purchaser.name %></td>
             <td><%= purchase.purchaser.name %></td>
           </tr>
-
         <% end %>
-
       </tbody>
     </table>
   <% end %>
-
   <!-- write custom div class with flex -->
   <div class="level is-hidden-tablet">
     <% if @purchases %>
       <% @purchases.each do |purchase| %>
-
         <div class="mobile-table-equiv">
           <div class="mobile-table-equiv-element has-text-weight-bold">
             <div>

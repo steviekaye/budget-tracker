@@ -1,8 +1,7 @@
 <% if Purchase.any? %>
   <p>
-    <%= "Total spending to date: " + number_to_currency(Purchase.where(:date => @date_start..@date_end).to_a.map(&:amount).sum) %>
+    <%= "Total spending to date: " + number_to_currency(Purchase.where(date: @date_start..@date_end).to_a.map(&:amount).sum) %>
   </p>
-
   <table>
     <thead>
       <tr>
@@ -14,13 +13,12 @@
       <% @categories.each do |category| %>
         <tr>
           <td><%= category.name %></td>
-          <td><%= number_to_currency(Purchase.where(subcategory: category.subcategories, :date => @date_start..@date_end).to_a.map(&:amount).sum) %>
+          <td><%= number_to_currency(Purchase.where(subcategory: category.subcategories, date: @date_start..@date_end).to_a.map(&:amount).sum) %>
           </tr>
         <% end %>
       </tbody>
     </table>
   <% end %>
-
   <p>
     <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c| [c.name, c.subcategories.map { |s| [s.name, s.id] }] end), prompt: "Select category") %>
   </p>
