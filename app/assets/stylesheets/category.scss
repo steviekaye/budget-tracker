@@ -14,3 +14,11 @@
     color: dimgrey;
   }
 }
+
+.js-edit-subcategory {
+  display: none !important;
+
+  &.active {
+    display: block !important;
+  }
+}
