@@ -24,13 +24,23 @@ RSpec.feature 'Categories', type: :feature do
     end.to change(Category.all, :count).by(0)
   end
 
-  scenario 'successfully delete a category with subcategories' do
+  scenario 'unsuccessfully delete a category with subcategories' do
     expect do
       within('h2') do
         click_link 'Delete category'
       end
+    end.to raise_error(Capybara::ElementNotFound)
+  end
+
+  scenario 'successfully delete a category' do
+    expect do
+      within('div#category_1') do
+        click_link 'Delete subcategory'
+      end
+      within('h2') do
+        click_link 'Delete category'
+      end
     end.to change(Category.all, :count).by(-1)
-                                       .and change(Subcategory.all, :count).by(-1)
   end
 
   after(:all) do

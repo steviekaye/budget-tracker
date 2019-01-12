@@ -3,9 +3,14 @@
 <% if @categories %>
   <div class="line-spacing">
     <% @categories.each_with_index do |category, idx| %>
-      <h2 class="subtitle"><%= category.name %>
-        <%= link_to category_path(category), method: :delete, data: { confirm: "Are you sure? #{category.name} and all its subcategories will be removed the purchases currently using them." }, title: "Delete category" do %>
-          <i class="fas fa-times has-text-dark icon-padding"></i>
+      <h2 class="subtitle">
+        <%= category.name %>
+        <% if category.subcategories.any? %>
+          <i class="fas fa-times has-text-grey-light icon-padding" title="Delete all subcategories to allow deletion of this category"></i>
+        <% else %>
+          <%= link_to category_path(category), method: :delete, data: { confirm: "Are you sure? #{category.name} will be deleted." }, title: "Delete category" do %>
+            <i class="fas fa-times has-text-dark icon-padding"></i>
+          <% end %>
         <% end %>
       </h2>
       <%= content_tag :div, class: 'buttons', id: "category_#{idx + 1}" do %>
