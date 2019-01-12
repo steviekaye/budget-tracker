@@ -11,7 +11,7 @@ class SubcategoriesController < ApplicationController
     @subcategory.destroy
 
     redirect_to categories_path
-end
+  end
 
   private
 

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Categories', type: :feature do
   before (:all) do
-    FactoryBot.create(:category, name: 'Existing Category')
+    category = FactoryBot.create(:category, name: 'Existing Category')
+    FactoryBot.create(:subcategory, name: 'ExistingSubCategory', category: category)
   end
 
   before (:each) do
@@ -21,6 +22,25 @@ RSpec.feature 'Categories', type: :feature do
       fill_in 'name', with: 'Existing Category'
       click_on 'create_category'
     end.to change(Category.all, :count).by(0)
+  end
+
+  scenario 'unsuccessfully delete a category with subcategories' do
+    expect do
+      within('h2') do
+        click_link 'Delete category'
+      end
+    end.to raise_error(Capybara::ElementNotFound)
+  end
+
+  scenario 'successfully delete a category' do
+    expect do
+      within('div#category_1') do
+        click_link 'Delete subcategory'
+      end
+      within('h2') do
+        click_link 'Delete category'
+      end
+    end.to change(Category.all, :count).by(-1)
   end
 
   after(:all) do
