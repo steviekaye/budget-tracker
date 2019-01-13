@@ -16,7 +16,7 @@
       <%= content_tag :div, class: 'buttons', id: "category_#{idx + 1}" do %>
         <% category.subcategories.each do |s|%>
           <div class="js-subcategory-container">
-            <span class="button is-rounded js-subcategory">
+            <span class="button is-rounded js-subcategory active">
               <%= s.name %>
               <i class="fas fa-pen has-text-dark icon-padding js-edit-subcategory-icon"></i>
               <%= link_to category_subcategory_path(category, s), method: :delete, data: { confirm: "Are you sure? #{s.name} will be removed as a subcategory from the purchases currently using it." }, title: "Delete subcategory" do %>
@@ -24,8 +24,9 @@
               <% end %>
             </span>
             <span class="button is-rounded js-edit-subcategory">
-              <input class="input" type="text" placeholder=<%= s.name %>>
-              <i class="fas fa-check"></i>
+              <% @category = category %>
+              <% @subcategory = s %>
+              <%= render 'subcategory-edit-form' %>
             </span>
           </div>
         <% end %>

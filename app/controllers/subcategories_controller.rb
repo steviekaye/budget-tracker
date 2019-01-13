@@ -13,6 +13,14 @@ class SubcategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def update
+    @subcategory = Subcategory.find(params[:id])
+    @subcategory.name = params[:subcategory][:name]
+    @subcategory.save
+
+    redirect_to categories_path
+  end
+
   private
 
   def subcategory_params

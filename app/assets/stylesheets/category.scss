@@ -22,3 +22,11 @@
     display: block !important;
   }
 }
+
+.js-subcategory {
+  display: none !important;
+
+  &.active {
+    display: block !important;
+  }
+}

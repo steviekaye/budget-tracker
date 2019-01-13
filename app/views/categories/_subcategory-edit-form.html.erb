@@ -1,0 +1,10 @@
+<%= form_with(model: [ @category, @subcategory ], local: true) do |form| %>
+  <div class="field">
+    <div class="control subcategory">
+      <%= form.text_field :name, placeholder: @subcategory.name %>
+      <%= button_tag type: "submit", class: "button is-small is-dark", id: "update_subcategory" do %>
+        <i class="fas fa-check"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
