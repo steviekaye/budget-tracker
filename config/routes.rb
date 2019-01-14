@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # get '/summaries', to: 'purchases#summary'
   # get '/category', to: 'categories#index'
 
+  # get 'purchases/create', to: 'purchases#create'
+
   resources :purchases do
   end
 
