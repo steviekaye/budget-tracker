@@ -9,7 +9,7 @@ RSpec.feature 'Purchases', type: :feature do
   end
 
   before (:each) do
-    visit root_path
+    visit new_purchase_path
   end
 
   scenario 'successfully create a new purchase' do

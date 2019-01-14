@@ -1,15 +1,12 @@
 class PurchasesController < ApplicationController
   def index
     @purchases = Purchase.all.order(:date).reverse_order.limit(5)
+  end
+
+  def new
     @purchase = Purchase.new
     @categories = Category.all
   end
-
-  def show; end
-
-  def new; end
-
-  def edit; end
 
   def create
     @categories = Category.all
@@ -21,11 +18,9 @@ class PurchasesController < ApplicationController
     if @purchase.save
       redirect_to purchases_path
     else
-      render 'index'
+      render new_purchase_path
     end
   end
-
-  def update; end
 
   private
 
