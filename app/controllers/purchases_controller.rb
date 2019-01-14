@@ -3,14 +3,10 @@ class PurchasesController < ApplicationController
     @purchases = Purchase.all.order(:date).reverse_order.limit(5)
   end
 
-  def show; end
-
   def new
     @purchase = Purchase.new
     @categories = Category.all
   end
-
-  def edit; end
 
   def create
     @categories = Category.all
@@ -25,8 +21,6 @@ class PurchasesController < ApplicationController
       render new_purchase_path
     end
   end
-
-  def update; end
 
   private
 
