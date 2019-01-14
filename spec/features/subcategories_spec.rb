@@ -46,6 +46,33 @@ RSpec.feature 'SubCategories', type: :feature do
     end
   end
 
+  describe 'user renames a subcategory' do
+    context 'when the new subcategory name is valid' do
+      it 'is renamed' do
+        expect do
+          within('div#category_1') do
+            Capybara.page.find('.js-edit-subcategory-icon').click
+            fill_in 'subcategory_rename', with: 'RenamedSubcategory'
+            click_on 'update_subcategory'
+          end
+        end.to change { Subcategory.first[:name] }.from('ExistingSubCategory').to('RenamedSubcategory')
+      end
+    end
+
+    context 'when the new subcategory name is invalid' do
+      it 'is not renamed' do
+        expect do
+          FactoryBot.create(:subcategory, name: 'AnotherSubcategory', category: Category.first)
+          within('div#category_1') do
+            Capybara.page.find('.js-edit-subcategory-icon').click
+            fill_in 'subcategory_rename', with: 'AnotherSubcategory'
+            click_on 'update_subcategory'
+          end
+        end.not_to change { Subcategory.first[:name] }
+      end
+    end
+  end
+
   scenario 'successfully delete a new subcategory' do
     expect do
       within('div#category_1') do
