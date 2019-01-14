@@ -3,7 +3,7 @@
 <% if @categories %>
   <div class="line-spacing">
     <% @categories.each_with_index do |category, idx| %>
-      <h2 class="subtitle js-category-container">
+      <%= content_tag :h2, class: 'subtitle js-category-container', id: "category_title_#{idx + 1}" do %>
         <div class="js-category active">
           <%= category.name %>
           <i class="fas fa-pen has-text-dark icon-padding js-edit-category-icon"></i>
@@ -19,7 +19,7 @@
         <div class="js-edit-category">
           <%= render 'category-edit-form' %>
         </div>
-      </h2>
+      <% end %>
       <%= content_tag :div, class: 'buttons', id: "category_#{idx + 1}" do %>
         <% category.subcategories.each do |s|%>
           <div class="js-subcategory-container">
