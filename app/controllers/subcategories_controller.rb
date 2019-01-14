@@ -15,10 +15,15 @@ class SubcategoriesController < ApplicationController
 
   def update
     @subcategory = Subcategory.find(params[:id])
-    @subcategory.name = params[:subcategory][:name]
-    @subcategory.save
 
-    redirect_to categories_path
+    if @subcategory.name == params[:subcategory][:name]
+      redirect_to categories_path
+    else
+      @subcategory.name = params[:subcategory][:name]
+      @subcategory.save
+
+      redirect_to categories_path
+    end
   end
 
   private

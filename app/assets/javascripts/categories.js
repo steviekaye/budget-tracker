@@ -11,7 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.toggle("active")
     })
   })
+});
 
+document.addEventListener('DOMContentLoaded', () => {
+  const titleContainers = document.querySelectorAll(".js-category-container")
 
+  titleContainers.forEach(titleContainer => {
+    const icon = titleContainer.querySelector(".js-edit-category-icon")
+    const button = titleContainer.querySelector(".js-category")
+    const editCategory = titleContainer.querySelector(".js-edit-category")
 
+    icon.addEventListener("click", () => {
+      editCategory.classList.add("active")
+      button.classList.toggle("active")
+    })
+  })
 });

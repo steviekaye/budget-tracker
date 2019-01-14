@@ -20,6 +20,19 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def update
+    @category = Category.find(params[:id])
+
+    if @category.name == params[:category][:name]
+      redirect_to categories_path
+    else
+      @category.name = params[:category][:name]
+      @category.save
+
+      redirect_to categories_path
+    end
+  end
+
   private
 
   def category_params

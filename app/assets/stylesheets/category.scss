@@ -30,3 +30,19 @@
     display: block !important;
   }
 }
+
+.js-edit-category {
+  display: none !important;
+
+  &.active {
+    display: block !important;
+  }
+}
+
+.js-category {
+  display: none !important;
+
+  &.active {
+    display: block !important;
+  }
+}

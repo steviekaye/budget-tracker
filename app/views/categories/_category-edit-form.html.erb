@@ -1,0 +1,10 @@
+<%= form_with(model: @category, local: true) do |form| %>
+  <div class="field edit-category">
+    <div class="control category">
+      <%= form.text_field :name, placeholder: @category.name, id: 'category_rename' %>
+      <%= button_tag type: "submit", class: "button is-small is-dark", id: "update_category" do %>
+        <i class="fas fa-check"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
