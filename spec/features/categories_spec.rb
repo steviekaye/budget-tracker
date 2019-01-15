@@ -42,7 +42,7 @@ RSpec.feature 'Categories', type: :feature do
     context 'when the new category name is valid' do
       it 'is renamed' do
         expect do
-          within('h2#category_title_1') do
+          within('div#category_title_1') do
             Capybara.page.find('.js-edit-category-icon').click
             fill_in 'category_rename', with: 'Renamed Category'
             click_on 'update_category'
@@ -55,7 +55,7 @@ RSpec.feature 'Categories', type: :feature do
       it 'is not renamed' do
         expect do
           FactoryBot.create(:category, name: 'Another Category')
-          within('h2#category_title_1') do
+          within('div#category_title_1') do
             Capybara.page.find('.js-edit-category-icon').click
             fill_in 'category_rename', with: 'Another Category'
             click_on 'update_category'

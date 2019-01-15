@@ -22,4 +22,14 @@ RSpec.describe Subcategory, type: :model do
       expect(subcategory).to be_valid
     end
   end
+
+  context 'when a subcategory name is blank' do
+    it 'is invalid' do
+      test_category = FactoryBot.create(:category, name: 'One')
+      subcategory = FactoryBot.build(:subcategory, name: '', category: test_category)
+      subcategory.valid?
+
+      expect(subcategory.errors[:name]).to include("can't be blank")
+    end
+  end
 end

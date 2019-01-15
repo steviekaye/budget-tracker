@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+  enableCategoryToggle();
+  enableSubcategoryToggle();
+});
+
+function   enableSubcategoryToggle() {
   const categoryContainers = document.querySelectorAll(".js-subcategory-container")
 
   categoryContainers.forEach(categoryContainer => {
@@ -11,9 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.toggle("active")
     })
   })
-});
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+
+function enableCategoryToggle() {
   const titleContainers = document.querySelectorAll(".js-category-container")
 
   titleContainers.forEach(titleContainer => {
@@ -26,4 +32,4 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.toggle("active")
     })
   })
-});
+}

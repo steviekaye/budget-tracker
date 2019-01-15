@@ -26,8 +26,7 @@ class CategoriesController < ApplicationController
     if @category.name == params[:category][:name]
       redirect_to categories_path
     else
-      @category.name = params[:category][:name]
-      @category.save
+      @category.update(name: params[:category][:name])
 
       redirect_to categories_path
     end

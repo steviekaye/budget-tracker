@@ -19,8 +19,7 @@ class SubcategoriesController < ApplicationController
     if @subcategory.name == params[:subcategory][:name]
       redirect_to categories_path
     else
-      @subcategory.name = params[:subcategory][:name]
-      @subcategory.save
+      @subcategory.update(name: params[:subcategory][:name])
 
       redirect_to categories_path
     end
