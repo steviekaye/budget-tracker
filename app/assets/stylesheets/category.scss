@@ -14,3 +14,36 @@
     color: dimgrey;
   }
 }
+
+.js-edit-subcategory {
+  display: none !important;
+
+  &.active {
+    display: block !important;
+  }
+}
+
+.js-subcategory {
+  display: none !important;
+
+  &.active {
+    display: block !important;
+  }
+}
+
+.js-edit-category {
+  display: none !important;
+
+  &.active {
+    display: block !important;
+  }
+}
+
+.js-category {
+  display: none !important;
+
+  &.active {
+    display: flex !important;
+    flex-direction: row;
+  }
+}

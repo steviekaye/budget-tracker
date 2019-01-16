@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   resources :summaries, only: %i[index show]
 
-  resources :categories, only: %i[create index destroy] do
-    resources :subcategories, only: %i[create destroy]
+  resources :categories, only: %i[create index destroy update] do
+    resources :subcategories, only: %i[create destroy update]
   end
 
   root 'purchases#index'

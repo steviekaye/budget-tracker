@@ -13,6 +13,18 @@ class SubcategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def update
+    @subcategory = Subcategory.find(params[:id])
+
+    if @subcategory.name == params[:subcategory][:name]
+      redirect_to categories_path
+    else
+      @subcategory.update(name: params[:subcategory][:name])
+
+      redirect_to categories_path
+    end
+  end
+
   private
 
   def subcategory_params

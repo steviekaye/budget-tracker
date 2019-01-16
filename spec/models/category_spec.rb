@@ -10,4 +10,13 @@ RSpec.describe Category, type: :model do
       expect(category.errors[:name]).to include('has already been taken')
     end
   end
+
+  context 'when a category name is blank' do
+    it 'is invalid' do
+      test_category = FactoryBot.build(:category, name: '')
+      test_category.valid?
+
+      expect(test_category.errors[:name]).to include("can't be blank")
+    end
+  end
 end

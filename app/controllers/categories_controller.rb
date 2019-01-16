@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @categories = Category.all.order(:id)
   end
 
   def destroy
@@ -18,6 +18,18 @@ class CategoriesController < ApplicationController
     @category.destroy
 
     redirect_to categories_path
+  end
+
+  def update
+    @category = Category.find(params[:id])
+
+    if @category.name == params[:category][:name]
+      redirect_to categories_path
+    else
+      @category.update(name: params[:category][:name])
+
+      redirect_to categories_path
+    end
   end
 
   private
