@@ -43,6 +43,7 @@
   display: none !important;
 
   &.active {
-    display: block !important;
+    display: flex !important;
+    flex-direction: row;
   }
 }

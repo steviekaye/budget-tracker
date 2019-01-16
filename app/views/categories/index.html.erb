@@ -5,17 +5,15 @@
     <% @categories.each_with_index do |category, idx| %>
       <%= content_tag :div, class: 'subtitle js-category-container', id: "category_title_#{idx + 1}" do %>
         <div class="js-category active">
-          <h2>
-            <%= category.name %>
-            <i class="fas fa-pen has-text-dark icon-padding js-edit-category-icon"></i>
-            <% if category.subcategories.any? %>
-              <i class="fas fa-times has-text-grey-light icon-padding" title="Delete all subcategories to allow deletion of this category"></i>
-            <% else %>
-              <%= link_to category_path(category), method: :delete, data: { confirm: "Are you sure? #{category.name} will be deleted." }, title: "Delete category" do %>
-                <i class="fas fa-times has-text-dark icon-padding"></i>
-              <% end %>
+          <h2><%= category.name %></h2>
+          <i class="fas fa-pen has-text-dark icon-padding js-edit-category-icon"></i>
+          <% if category.subcategories.any? %>
+            <i class="fas fa-times has-text-grey-light icon-padding" title="Delete all subcategories to allow deletion of this category"></i>
+          <% else %>
+            <%= link_to category_path(category), method: :delete, data: { confirm: "Are you sure? #{category.name} will be deleted." }, title: "Delete category" do %>
+              <i class="fas fa-times has-text-dark icon-padding"></i>
             <% end %>
-          </h2>
+          <% end %>
         </div>
         <% @category = category %>
         <div class="js-edit-category">

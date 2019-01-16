@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   enableSubcategoryToggle();
 });
 
-function   enableSubcategoryToggle() {
+function enableSubcategoryToggle() {
   const categoryContainers = document.querySelectorAll(".js-subcategory-container")
 
   categoryContainers.forEach(categoryContainer => {
