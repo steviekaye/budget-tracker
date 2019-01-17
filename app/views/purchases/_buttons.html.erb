@@ -1,0 +1,9 @@
+<%= form_with url: {action: "limit"} do |f| %>
+  <div class="field is-grouped">
+    <div class="control">
+      <% [5, 10, 20, 50, 100].each do |value| %>
+        <%= f.submit value, value: value %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

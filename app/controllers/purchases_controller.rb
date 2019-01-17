@@ -1,6 +1,9 @@
 class PurchasesController < ApplicationController
+  @@purchase_limit = 20
+
   def index
-    @purchases = Purchase.all.order(:date).reverse_order.limit(5)
+    # limit = limit(params)
+    @purchases = Purchase.order(:date).reverse_order.limit(@@purchase_limit)
   end
 
   def new
@@ -10,6 +13,7 @@ class PurchasesController < ApplicationController
 
   def create
     @categories = Category.all
+
     @purchase = Purchase.new(purchase_params)
     @purchase.subcategory = Subcategory.find(params[:subcategory_id]) if params[:subcategory_id].present?
     @purchase.purchaser = User.find(params[:purchase][:purchaser_id]) if params[:purchase][:purchaser_id].present?
@@ -22,9 +26,16 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def limit
+    @@purchase_limit = params[:commit]
+    redirect_to purchases_path
+  end
+
   private
 
   def purchase_params
-    params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory)
+    if params[:purchase]
+      params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory)
+    end
   end
 end

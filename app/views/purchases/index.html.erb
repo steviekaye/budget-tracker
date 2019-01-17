@@ -1,6 +1,7 @@
 <h1 class="title">Purchases</h1>
 <div class='purchase-index line-spacing'>
-  <h3 class="title is-4">Your last five purchases</h3>
+  <h3 class="title is-4">Last x purchases</h3>
+  <%= render 'buttons' %>
   <% if @purchases&.any? %>
     <table class="table is-bordered is-striped is-hidden-mobile">
       <thead>
