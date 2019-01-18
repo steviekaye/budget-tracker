@@ -27,15 +27,13 @@ class PurchasesController < ApplicationController
   end
 
   def limit
-    @@purchase_limit = params[:commit].to_i
+    @@purchase_limit = params[:limit].to_i
     redirect_to purchases_path
   end
 
   private
 
   def purchase_params
-    if params[:purchase]
-      params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory)
-    end
+    params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory)
   end
 end

@@ -2,7 +2,7 @@
 <div class='purchase-index line-spacing-top'>
   <div class='purchase-header'>
     <h3 class="title is-4">Last x purchases</h3>
-    <%= render 'buttons', :plimit => @plimit %>
+    <%= render 'buttons' %>
   </div>
   <% if @purchases&.any? %>
     <table class="table is-bordered is-striped is-hidden-mobile">

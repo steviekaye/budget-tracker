@@ -16,7 +16,7 @@ RSpec.feature 'Purchases', type: :feature do
   scenario 'display twenty purchases by default' do
     click_link 'Purchases'
 
-    numrows = page.all(:css, 'table tr').size - 1 # subtracting header row
+    numrows = page.all(:css, 'table tbody tr').size
 
     expect(numrows).to be == 20
   end
@@ -25,7 +25,7 @@ RSpec.feature 'Purchases', type: :feature do
     click_link 'Purchases'
     click_on 'button_limit_5'
 
-    numrows = page.all(:css, 'table tr').size - 1 # subtracting header row
+    numrows = page.all(:css, 'table tbody tr').size
 
     expect(numrows).to be == 5
   end
