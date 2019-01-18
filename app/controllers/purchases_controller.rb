@@ -3,7 +3,12 @@ class PurchasesController < ApplicationController
 
   def index
     @plimit = @@purchase_limit
-    @purchases = Purchase.order(:date).reverse_order.limit(@@purchase_limit)
+    if @@purchase_limit.instance_of? Integer
+      @purchases = Purchase.order(:date).reverse_order.limit(@@purchase_limit)
+    end
+    if @@purchase_limit.instance_of? Date
+      @purchases = Purchase.where(date: @@purchase_limit..Date.current).order(:date).reverse_order
+    end
   end
 
   def new
@@ -27,7 +32,8 @@ class PurchasesController < ApplicationController
   end
 
   def limit
-    @@purchase_limit = params[:limit].to_i
+    @@purchase_limit = params[:limit].to_i if params[:limit]
+    @@purchase_limit = params[:date].to_date if params[:date]
     redirect_to purchases_path
   end
 
