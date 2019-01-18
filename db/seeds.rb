@@ -68,4 +68,36 @@ if Purchase.none?
                   purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Public transport'))
   Purchase.create(date: '2018-11-22', description: 'Summer hat', amount: 23.00, payee: 'Paperbag Princess',
                   purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Clothing'))
+  Purchase.create(date: '2019-01-05', description: 'Mandy tickets', amount: 26.00, payee: 'Lighthouse Cuba',
+                  purchaser: User.first, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Movie ticket'))
+  Purchase.create(date: '2019-01-08', description: 'Beer beer', amount: 8.00, payee: 'Garage Project',
+                  purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Alcohol'))
+  Purchase.create(date: '2019-01-10', description: 'Hot choco', amount: 5.00, payee: 'Scopa',
+                  purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Cafe/coffee'))
+  Purchase.create(date: '2018-12-28', description: 'File folder', amount: 4.70, payee: 'Warehouse Stationary',
+                  purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Actual misc'))
+  Purchase.create(date: '2018-10-13', description: 'Koha door charge', amount: 2.00, payee: 'Upoko Alpine Resort',
+                  purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Gig/event ticket'))
+  Purchase.create(date: '2018-10-13', description: 'Cassette', amount: 10.00, payee: 'fruit juice parade',
+                  purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Books/records/etc'))
+  Purchase.create(date: '2018-08-25', description: 'Book at book launch', amount: 20.00, payee: 'Lawrence & Gibson',
+                  purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Books/records/etc'))
+  Purchase.create(date: '2018-08-21', description: 'Rent', amount: 320.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Rent'))
+  Purchase.create(date: '2018-08-21', description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Household expenses'))
+  Purchase.create(date: '2018-08-21', description: 'Food - flat', amount: 100.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Food - flat'))
+  Purchase.create(date: '2018-08-14', description: 'Rent', amount: 320.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Rent'))
+  Purchase.create(date: '2018-08-14', description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Household expenses'))
+  Purchase.create(date: '2018-08-14', description: 'Food - flat', amount: 100.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Food - flat'))
+  Purchase.create(date: '2018-08-28', description: 'Rent', amount: 320.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Rent'))
+  Purchase.create(date: '2018-08-28', description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Household expenses'))
+  Purchase.create(date: '2018-08-28', description: 'Food - flat', amount: 100.00, payee: '9 Holloway Rd',
+                  purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Food - flat'))
 end

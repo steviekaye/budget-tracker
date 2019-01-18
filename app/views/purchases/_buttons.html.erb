@@ -1,0 +1,9 @@
+<%= form_with url: {action: "limit"} do |f| %>
+  <div class="field is-grouped line-spacing-bottom limit-button-spacing">
+    <div class="control">
+      <% [5, 10, 20, 50, 100].each do |value| %>
+        <%= f.button value, type: 'submit', name: "limit", value: value, id: "button_limit_#{value}", class: 'button' + active_limit(value, @plimit)  %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

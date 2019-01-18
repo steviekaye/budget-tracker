@@ -1,7 +1,7 @@
 <h1 class="title">Categories</h1>
 <%= render 'category_form' %>
 <% if @categories %>
-  <div class="line-spacing">
+  <div class="line-spacing-top">
     <% @categories.each_with_index do |category, idx| %>
       <%= content_tag :div, class: 'subtitle js-category-container', id: "category_title_#{idx + 1}" do %>
         <div class="js-category active">
