@@ -10,9 +10,9 @@
     <div class="control">
       <% { 'Week' => 1.week.ago, 'Fortnight' => 2.weeks.ago, 'Month' => 1.month.ago }.each do |key, value| %>
         <% if value.to_date == @plimit %>
-          <%= f.button key, type: 'submit', name: "date", value: value, id: "button_week", class: 'button is-dark'%>
+          <%= f.button key, type: 'submit', name: "date", value: value, id: "button_#{key}", class: 'button is-dark'%>
         <% else %>
-          <%= f.button key, type: 'submit', name: "date", value: value, id: "button_week", class: 'button'%>
+          <%= f.button key, type: 'submit', name: "date", value: value, id: "button_#{key}", class: 'button'%>
         <% end %>
       <% end %>
     </div>

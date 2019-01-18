@@ -7,6 +7,9 @@ RSpec.feature 'Purchases', type: :feature do
     FactoryBot.create(:user, name: 'Both')
     FactoryBot.create(:subcategory)
     FactoryBot.create_list(:purchase, 28)
+    FactoryBot.create_list(:purchase, 3, date: 2.days.ago)
+    FactoryBot.create_list(:purchase, 3, date: 10.days.ago)
+    FactoryBot.create_list(:purchase, 3, date: 23.days.ago)
   end
 
   before (:each) do
@@ -28,6 +31,33 @@ RSpec.feature 'Purchases', type: :feature do
     numrows = page.all(:css, 'table tbody tr').size
 
     expect(numrows).to be == 5
+  end
+
+  scenario 'display three purchases after clicking on week button' do
+    click_link 'Purchases'
+    click_on 'button_Week'
+
+    numrows = page.all(:css, 'table tr').size - 1 # subtracting header row
+
+    expect(numrows).to be == 3
+  end
+
+  scenario 'display six purchases after clicking on fortnight button' do
+    click_link 'Purchases'
+    click_on 'button_Fortnight'
+
+    numrows = page.all(:css, 'table tr').size - 1 # subtracting header row
+
+    expect(numrows).to be == 6
+  end
+
+  scenario 'display nine purchases after clicking on month button' do
+    click_link 'Purchases'
+    click_on 'button_Month'
+
+    numrows = page.all(:css, 'table tr').size - 1 # subtracting header row
+
+    expect(numrows).to be == 9
   end
 
   after(:all) do
