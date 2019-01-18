@@ -70,7 +70,7 @@ RSpec.feature 'Categories', type: :feature do
       within('div#category_1') do
         click_link 'Delete subcategory'
       end
-      within('h2') do
+      within('div#category_title_1') do
         click_link 'Delete category'
       end
     end.to change(Category.all, :count).by(-1)

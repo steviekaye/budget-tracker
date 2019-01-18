@@ -1,8 +1,12 @@
 <%= form_with url: {action: "limit"} do |f| %>
-  <div class="field is-grouped">
+  <div class="field is-grouped line-spacing-bottom limit-button-spacing">
     <div class="control">
       <% [5, 10, 20, 50, 100].each do |value| %>
-        <%= f.submit value, value: value %>
+        <% if value == plimit %>
+          <%= f.submit value, value: value, id: "button_limit_#{value}", class: 'button is-dark' %>
+        <% else %>
+          <%= f.submit value, value: value, id: "button_limit_#{value}", class: 'button' %>
+        <% end %>
       <% end %>
     </div>
   </div>

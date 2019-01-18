@@ -6,6 +6,6 @@ FactoryBot.define do
     payee { 'Evil Dairy' }
     purchaser { FactoryBot.build(:user, name: 'Ellen') }
     purchasee { FactoryBot.build(:user, name: 'Both') }
-    subcategory { FactoryBot.build(:subcategory, name: 'Food - flat') }
+    sequence(:subcategory) { |n| FactoryBot.build(:subcategory, name: "subcategory#{n}") }
   end
 end
