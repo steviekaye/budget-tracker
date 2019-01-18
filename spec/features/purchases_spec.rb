@@ -37,7 +37,7 @@ RSpec.feature 'Purchases', type: :feature do
     click_link 'Purchases'
     click_on 'button_Week'
 
-    numrows = page.all(:css, 'table tr').size - 1 # subtracting header row
+    numrows = page.all(:css, 'table tbody tr').size # subtracting header row
 
     expect(numrows).to be == 3
   end
@@ -46,7 +46,7 @@ RSpec.feature 'Purchases', type: :feature do
     click_link 'Purchases'
     click_on 'button_Fortnight'
 
-    numrows = page.all(:css, 'table tr').size - 1 # subtracting header row
+    numrows = page.all(:css, 'table tbody tr').size # subtracting header row
 
     expect(numrows).to be == 6
   end
@@ -55,7 +55,7 @@ RSpec.feature 'Purchases', type: :feature do
     click_link 'Purchases'
     click_on 'button_Month'
 
-    numrows = page.all(:css, 'table tr').size - 1 # subtracting header row
+    numrows = page.all(:css, 'table tbody tr').size # subtracting header row
 
     expect(numrows).to be == 9
   end
