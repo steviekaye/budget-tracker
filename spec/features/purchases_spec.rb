@@ -19,45 +19,45 @@ RSpec.feature 'Purchases', type: :feature do
   scenario 'display twenty purchases by default' do
     click_link 'Purchases'
 
-    numrows = page.all(:css, 'table tbody tr').size
+    purchases = page.all(:css, 'table tbody tr').size
 
-    expect(numrows).to be == 20
+    expect(purchases).to be == 20
   end
 
   scenario 'display five purchases after clicking appropriate button' do
     click_link 'Purchases'
     click_on 'button_limit_5'
 
-    numrows = page.all(:css, 'table tbody tr').size
+    purchases = page.all(:css, 'table tbody tr').size
 
-    expect(numrows).to be == 5
+    expect(purchases).to be == 5
   end
 
-  scenario 'display three purchases after clicking on week button' do
+  scenario 'display purchases from the last week' do
     click_link 'Purchases'
     click_on 'button_Week'
 
-    numrows = page.all(:css, 'table tbody tr').size # subtracting header row
+    purchases = page.all(:css, 'table tbody tr').size
 
-    expect(numrows).to be == 3
+    expect(purchases).to be == 3
   end
 
-  scenario 'display six purchases after clicking on fortnight button' do
+  scenario 'display purchases from the last fortnight' do
     click_link 'Purchases'
     click_on 'button_Fortnight'
 
-    numrows = page.all(:css, 'table tbody tr').size # subtracting header row
+    purchases = page.all(:css, 'table tbody tr').size
 
-    expect(numrows).to be == 6
+    expect(purchases).to be == 6
   end
 
-  scenario 'display nine purchases after clicking on month button' do
+  scenario 'display purchases from the last month' do
     click_link 'Purchases'
     click_on 'button_Month'
 
-    numrows = page.all(:css, 'table tbody tr').size # subtracting header row
+    purchases = page.all(:css, 'table tbody tr').size
 
-    expect(numrows).to be == 9
+    expect(purchases).to be == 9
   end
 
   after(:all) do

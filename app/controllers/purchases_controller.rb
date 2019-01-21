@@ -3,12 +3,7 @@ class PurchasesController < ApplicationController
 
   def index
     @plimit = @@purchase_limit
-    if @@purchase_limit.instance_of? Integer
-      @purchases = Purchase.order(:date).reverse_order.limit(@@purchase_limit)
-    end
-    if @@purchase_limit.instance_of? Date
-      @purchases = Purchase.where(date: @@purchase_limit..Date.current).order(:date).reverse_order
-    end
+    @purchases = purchase_sort
   end
 
   def new
@@ -41,5 +36,15 @@ class PurchasesController < ApplicationController
 
   def purchase_params
     params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory)
+  end
+
+  def purchase_sort
+    if @@purchase_limit.instance_of? Integer
+      Purchase.order(:date).reverse_order.limit(@@purchase_limit)
+    elsif @@purchase_limit.instance_of? Date
+      Purchase.where(date: @@purchase_limit..Date.current).order(:date).reverse_order
+    else
+      raise 'Invalid sorting value'
+    end
   end
 end
