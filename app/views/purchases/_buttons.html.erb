@@ -13,4 +13,11 @@
       <% end %>
     </div>
   </div>
+  <div class="field is-grouped line-spacing-bottom limit-button-spacing">
+    <div class="control">
+      <%= f.date_field :start_date , class: "input" %>
+      <%= f.date_field :end_date , class: "input" %>
+      <%= f.submit class: 'button is-dark' %>
+    </div>
+  </div>
 <% end %>
