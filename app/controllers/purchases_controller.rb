@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
 
   def index
     @plimit = @@purchase_limit
-    @purchases = purchase_sort
+    @purchases = filter_purchases
   end
 
   def new
@@ -38,7 +38,7 @@ class PurchasesController < ApplicationController
     params.require(:purchase).permit(:date, :description, :amount, :payee, :subcategory)
   end
 
-  def purchase_sort
+  def filter_purchases
     if @@purchase_limit.instance_of? Integer
       Purchase.order(:date).reverse_order.limit(@@purchase_limit)
     elsif @@purchase_limit.instance_of? Date
