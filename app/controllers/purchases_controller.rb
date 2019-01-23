@@ -27,9 +27,11 @@ class PurchasesController < ApplicationController
   end
 
   def limit
-    @@purchase_limit = params[:limit].to_i if params[:limit]
-    @@purchase_limit = params[:date].to_date if params[:date]
-    if params[:start_date] && params[:end_date]
+    if params[:limit]
+      @@purchase_limit = params[:limit].to_i
+    elsif params[:date]
+      @@purchase_limit = params[:date].to_date
+    elsif params[:start_date] && params[:end_date]
       if validate_dates(params[:start_date].to_date, params[:end_date].to_date)
         @@purchase_limit = { 'start_date' => params[:start_date].to_date, 'end_date' => params[:end_date].to_date }
       end

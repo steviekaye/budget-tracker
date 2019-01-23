@@ -47,3 +47,13 @@
 .limit-button-spacing {
   padding-left: 5em;
 }
+
+.dark-date {
+  background-color: $grey-darker !important;
+  color: $white-ter !important;
+}
+
+.date-display {
+  display: flex !important;
+  flex-direction: row;
+}
