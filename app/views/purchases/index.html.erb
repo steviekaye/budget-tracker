@@ -1,7 +1,10 @@
 <h1 class="title">Purchases</h1>
 <div class='purchase-index line-spacing-top'>
   <div class='purchase-header'>
-    <h3 class="title is-4">Last x purchases</h3>
+    <div>
+      <h3 class="title is-4 purchase-header-titles">Last purchases:</h3>
+      <h3 class="title is-4 purchase-header-titles">By date:</h3>
+    </div>
     <%= render 'buttons' %>
   </div>
   <% if @purchases&.any? %>
@@ -31,6 +34,8 @@
         <% end %>
       </tbody>
     </table>
+  <% else %>
+    <p class="has-text-centered is-size-4">There are no purchases in the selected period </p>
   <% end %>
   <!-- write custom div class with flex -->
   <div class="level is-hidden-tablet">

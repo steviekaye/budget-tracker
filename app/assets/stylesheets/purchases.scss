@@ -42,6 +42,11 @@
 
 .purchase-header {
   display: flex;
+  // flex-direction: column;
+}
+
+.purchase-header-titles {
+  padding-top: 1em;
 }
 
 .limit-button-spacing {

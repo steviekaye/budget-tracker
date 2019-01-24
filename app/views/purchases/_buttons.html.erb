@@ -22,4 +22,7 @@
       <%= f.button 'Custom date range', type: 'submit', class: 'button' + date_limit(@plimit) %>
     </div>
   </div>
+  <% if @plimit.instance_of? Hash %>
+    <p class="is-size-6"><%= "Displaying purchases made between #{@plimit['start_date']} and #{@plimit['end_date']}" %></p>
+  <% end %>
 <% end %>
