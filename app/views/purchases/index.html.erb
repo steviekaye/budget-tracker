@@ -1,9 +1,11 @@
 <h1 class="title">Purchases</h1>
 <div class='purchase-index line-spacing-top'>
   <div class='purchase-header'>
-    <h3 class="title is-4">Last x purchases</h3>
     <%= render 'buttons' %>
   </div>
+  <% if @plimit.instance_of? Hash %>
+    <h3 class="is-size-5 header-centered purchase-display-between"><%= "Displaying purchases made between #{@plimit['start_date']} and #{@plimit['end_date']}" %></h3>
+  <% end %>
   <% if @purchases&.any? %>
     <table class="table is-bordered is-striped is-hidden-mobile">
       <thead>
@@ -31,6 +33,8 @@
         <% end %>
       </tbody>
     </table>
+  <% else %>
+    <p class="has-text-centered is-size-4">There are no purchases in the selected period </p>
   <% end %>
   <!-- write custom div class with flex -->
   <div class="level is-hidden-tablet">

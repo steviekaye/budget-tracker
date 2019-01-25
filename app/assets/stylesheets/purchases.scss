@@ -42,8 +42,32 @@
 
 .purchase-header {
   display: flex;
+  margin-bottom: 1rem;
+}
+
+.purchase-display-between {
+  margin-bottom: 1rem;
+}
+
+.purchase-header-titles {
+  padding-top: 1em;
 }
 
 .limit-button-spacing {
   padding-left: 5em;
+}
+
+.dark-date {
+  background-color: $grey-darker !important;
+  color: $white-ter !important;
+}
+
+.date-display {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-centered {
+  text-align: center;
 }

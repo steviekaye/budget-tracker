@@ -27,8 +27,15 @@ class PurchasesController < ApplicationController
   end
 
   def limit
-    @@purchase_limit = params[:limit].to_i if params[:limit]
-    @@purchase_limit = params[:date].to_date if params[:date]
+    if params[:limit]
+      @@purchase_limit = params[:limit].to_i
+    elsif params[:date]
+      @@purchase_limit = params[:date].to_date
+    elsif params[:start_date] && params[:end_date]
+      if validate_dates(params[:start_date].to_date, params[:end_date].to_date)
+        @@purchase_limit = { 'start_date' => params[:start_date].to_date, 'end_date' => params[:end_date].to_date }
+      end
+    end
     redirect_to purchases_path
   end
 
@@ -43,8 +50,18 @@ class PurchasesController < ApplicationController
       Purchase.order(:date).reverse_order.limit(@@purchase_limit)
     elsif @@purchase_limit.instance_of? Date
       Purchase.where(date: @@purchase_limit..Date.current).order(:date).reverse_order
+    elsif @@purchase_limit.instance_of? Hash
+      @purchases = Purchase.where(date: @@purchase_limit['start_date']..@@purchase_limit['end_date']).order(:date).reverse_order
     else
       raise 'Invalid sorting value'
+    end
+  end
+
+  def validate_dates(start_date, end_date)
+    if start_date < end_date
+      true
+    else
+      raise 'Invalid date range'
     end
   end
 end
