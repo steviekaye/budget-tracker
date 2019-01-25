@@ -2,14 +2,14 @@
   <div class="date-display">
     <h3 class="title is-4 purchase-header-titles">Last purchases:</h3>
     <div>
-      <div class="field is-grouped line-spacing-bottom limit-button-spacing">
+      <div class="field is-grouped limit-button-spacing">
         <div class="control">
           <% [5, 10, 20, 50, 100].each do |value| %>
             <%= f.button value, type: 'submit', name: "limit", value: value, id: "button_limit_#{value}", class: 'button' + active_limit(value, @plimit) %>
           <% end %>
         </div>
       </div>
-      <div class="field is-grouped line-spacing-bottom limit-button-spacing">
+      <div class="field is-grouped limit-button-spacing">
         <div class="control">
           <% { 'Week' => 1.week.ago, 'Fortnight' => 2.weeks.ago, 'Month' => 1.month.ago }.each do |key, value| %>
             <%= f.button key, type: 'submit', name: "date", value: value, id: "button_#{key}", class: 'button' + active_limit(value.to_date, @plimit) %>
@@ -20,7 +20,7 @@
   </div>
   <div class="date-display">
     <h3 class="title is-4 purchase-header-titles">By date:</h3>
-    <div class="field is-grouped line-spacing-bottom limit-button-spacing">
+    <div class="field is-grouped limit-button-spacing">
       <div class="control date-display">
         <%= f.date_field :start_date , class: "input", value: start_date(@plimit) %>
         <%# f.date_field :start_date , class: "input" + date_limit(@plimit), value: start_date(@plimit) %>
