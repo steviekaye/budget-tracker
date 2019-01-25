@@ -1,12 +1,11 @@
 <h1 class="title">Purchases</h1>
 <div class='purchase-index line-spacing-top'>
   <div class='purchase-header'>
-    <div>
-      <h3 class="title is-4 purchase-header-titles">Last purchases:</h3>
-      <h3 class="title is-4 purchase-header-titles">By date:</h3>
-    </div>
     <%= render 'buttons' %>
   </div>
+  <% if @plimit.instance_of? Hash %>
+    <h3 class="is-size-5 header-centered"><%= "Displaying purchases made between #{@plimit['start_date']} and #{@plimit['end_date']}" %></h3>
+  <% end %>
   <% if @purchases&.any? %>
     <table class="table is-bordered is-striped is-hidden-mobile">
       <thead>

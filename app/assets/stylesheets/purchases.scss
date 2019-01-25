@@ -42,7 +42,6 @@
 
 .purchase-header {
   display: flex;
-  // flex-direction: column;
 }
 
 .purchase-header-titles {
@@ -61,4 +60,8 @@
 .date-display {
   display: flex !important;
   flex-direction: row;
+}
+
+.header-centered {
+  text-align: center;
 }
