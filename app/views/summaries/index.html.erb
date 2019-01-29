@@ -1,9 +1,10 @@
+<h1 class="title header-centered ">Total Spending</h1>
 <%= pie_chart @totals, donut: true, legend: false  %>
 <% if Purchase.any? %>
-  <p>
+  <p class="line-spacing-top">
     <%= "Total spending to date: " + number_to_currency(Purchase.where(date: @date_start..@date_end).to_a.map(&:amount).sum) %>
   </p>
-  <table>
+  <table class="line-spacing-top">
     <thead>
       <tr>
         <th>Category</th>
@@ -20,6 +21,3 @@
       </tbody>
     </table>
   <% end %>
-  <p>
-    <%= select_tag(:subcategory_id, grouped_options_for_select(@categories.map do |c| [c.name, c.subcategories.map { |s| [s.name, s.id] }] end), prompt: "Select category") %>
-  </p>
