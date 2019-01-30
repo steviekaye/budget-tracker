@@ -1,5 +1,5 @@
-<h1 class="title header-centered ">Total Spending</h1>
-<%= pie_chart @totals, donut: true, legend: true, library: {legend: {position: "bottom"}, tooltips: {mode: 'label'}}  %>
-<p class="is-size-4 line-spacing-top">
+<h1 class="title has-text-centered ">Total Spending</h1>
+<p class="has-text-centered">
   <%= "Total spending to date: " + number_to_currency(@overall_sum) %>
 </p>
+<%= pie_chart @totals, donut: true, legend: true, library: {legend: {position: "bottom"}, tooltips: {mode: 'label'}}  %>
