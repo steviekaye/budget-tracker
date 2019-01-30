@@ -3,6 +3,8 @@ class Purchase < ApplicationRecord
   belongs_to :purchaser, class_name: 'User', foreign_key: 'purchaser_id'
   belongs_to :purchasee, class_name: 'User', foreign_key: 'purchasee_id'
 
+  has_one :category, through: :subcategory
+
   validates :date, presence: true
   validates :description, presence: true
   validates :amount, presence: true
