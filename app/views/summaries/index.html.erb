@@ -1,23 +1,5 @@
 <h1 class="title header-centered ">Total Spending</h1>
-<%= pie_chart @totals, donut: true, legend: false  %>
-<% if Purchase.any? %>
-  <p class="line-spacing-top">
-    <%= "Total spending to date: " + number_to_currency(Purchase.where(date: @date_start..@date_end).to_a.map(&:amount).sum) %>
-  </p>
-  <table class="line-spacing-top">
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th>Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @categories.each do |category| %>
-        <tr>
-          <td><%= category.name %></td>
-          <td><%= number_to_currency(Purchase.where(subcategory: category.subcategories, date: @date_start..@date_end).to_a.map(&:amount).sum) %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+<%= pie_chart @totals, donut: true, legend: true, library: {legend: {position: "bottom"}, tooltips: {mode: 'label'}}  %>
+<p class="is-size-4 line-spacing-top">
+  <%= "Total spending to date: " + number_to_currency(@overall_sum) %>
+</p>
