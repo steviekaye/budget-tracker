@@ -14,9 +14,9 @@ RSpec.describe SummariesController, type: :controller do
       FactoryBot.create(:purchase, description: 'Durian', amount: 60, date: '2018-11-15', subcategory: groceries_subcategory)
     end
 
-    it 'assigns the instance variable @month_totals' do
+    it 'assigns the instance variable @category_totals_by_month' do
       get :index
-      expect(assigns(:month_totals)).to_not be nil
+      expect(assigns(:category_totals_by_month)).to_not be nil
     end
 
     context 'correctly shapes the data for chartkick' do
@@ -24,14 +24,14 @@ RSpec.describe SummariesController, type: :controller do
         expected = { data: [['November 2018', 100], ['December 2018', 150]], name: 'Basics' }
 
         get :index
-        expect(assigns(:month_totals).first).to eq(expected)
+        expect(assigns(:category_totals_by_month).first).to eq(expected)
       end
 
       it 'is in month order' do
         expected = { data: [['November 2018', 100], ['December 2018', 150]], name: 'Basics' }
 
         get :index
-        expect(assigns(:month_totals).first).to eq(expected)
+        expect(assigns(:category_totals_by_month).first).to eq(expected)
       end
     end
   end

@@ -3,4 +3,4 @@
   <%= "Total spending to date: #{number_to_currency(@overall_sum)}" %>
 </p>
 <%= pie_chart @totals, donut: true, legend: true, library: {legend: {position: "bottom"}, tooltips: {mode: 'label'}}  %>
-<%= column_chart @month_totals, stacked: true, library: {legend: {position: "bottom"}} %>
+<%= column_chart @category_totals_by_month, stacked: true, library: {legend: {position: "bottom"}} %>
