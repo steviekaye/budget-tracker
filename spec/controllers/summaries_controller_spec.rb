@@ -31,7 +31,7 @@ RSpec.describe SummariesController, type: :controller do
         expected = { data: [['November 2018', 100], ['December 2018', 150]], name: 'Basics' }
 
         get :index
-        expect(assigns(:month_totals).first).to be nil
+        expect(assigns(:month_totals).first).to eq(expected)
       end
     end
   end

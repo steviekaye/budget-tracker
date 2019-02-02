@@ -47,7 +47,7 @@ class SummariesController < ApplicationController
     month.map { |key, value| { name: key, data: value.group_by_month { |n| n[:date] }.map { |key, value| [key.strftime('%B %Y'), value.map { |v| v[:amount] }.sum] } } }.each do |c|
       contained_months = c[:data].map(&:first)
       blank_months = date_range - contained_months
-      blanks_months.each { |b| insert_empty_month(c[:data], [b, 0]) }
+      blank_months.each { |b| insert_empty_month(c[:data], [b, 0]) }
     end
   end
 
