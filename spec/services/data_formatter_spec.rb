@@ -15,15 +15,15 @@ RSpec.describe DataFormatter, type: :service do
 
   describe '#category_totals' do
     it 'correctly sums category totals' do
-      expected = [['Basics', 0.25e3], ['Food', 0.13e3]]
+      expected = [['Basics', 250], ['Food', 130]]
 
       expect(DataFormatter.new(Purchase.all).category_totals).to eq(expected)
     end
   end
 
   describe '#category_totals_by_month' do
-    it 'correctly sums totals by month' do
-      expected = [{ data: [['October 2018', 0.1e3], ['November 2018', 0], ['December 2018', 0.15e3]], name: 'Basics' }, { data: [['October 2018', 0.6e2], ['November 2018', 0], ['December 2018', 0.7e2]], name: 'Food' }]
+    it 'correctly sums categories by month' do
+      expected = [{ data: [['October 2018', 100], ['November 2018', 0], ['December 2018', 150]], name: 'Basics' }, { data: [['October 2018', 60], ['November 2018', 0], ['December 2018', 70]], name: 'Food' }]
 
       expect(DataFormatter.new(Purchase.all).category_totals_by_month).to eq(expected)
     end
