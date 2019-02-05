@@ -10,10 +10,20 @@ class DataFormatter
   end
 
   def category_totals_by_month
-    sum_purchases_by_month(purchases_by_category)
+    summaries = purchases_by_category.map do |category_name, purchases_in_cat|
+      { name: category_name, data: monthly_totals(purchases_in_cat) }
+    end
+
+    ensure_all_months_present(summaries)
   end
 
   private
+
+  def monthly_totals(purchases_in_cat)
+    purchases_in_cat.group_by_month { |p| p[:date] }.map do |month, purchases|
+      [month.strftime('%B %Y'), purchases.map { |p| p[:amount] }.sum]
+    end
+  end
 
   def sum_purchases_in_category(category)
     @purchases.where(subcategory: category.subcategories).to_a.map(&:amount).sum
@@ -26,18 +36,6 @@ class DataFormatter
     end
 
     totals.flatten.group_by { |n| n[:name] }
-  end
-
-  def sum_purchases_by_month(purchases_by_category)
-    summaries = purchases_by_category.map do |key, value|
-      { name: key, data: value.group_by_month { |n| n[:date] }.map do |key, value|
-        [key.strftime('%B %Y'), value.map do |v|
-          v[:amount]
-        end.sum]
-      end }
-    end
-
-    ensure_all_months_present(summaries)
   end
 
   def ensure_all_months_present(summaries)
