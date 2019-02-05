@@ -30,12 +30,12 @@ class DataFormatter
   end
 
   def purchases_by_category
-    totals = Category.all.map do |category|
+    purchases_with_category = Category.all.map do |category|
       purchases = @purchases.where(subcategory: category.subcategories).map { |purchase| { date: purchase.date, amount: purchase.amount } }
       purchases.map { |purchase| purchase.merge!(name: category.name) }
     end
 
-    totals.flatten.group_by { |n| n[:name] }
+    purchases_with_category.flatten.group_by { |n| n[:name] }
   end
 
   def ensure_all_months_present(summaries)
