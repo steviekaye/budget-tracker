@@ -14,6 +14,7 @@ gem 'font-awesome-sass', '~> 5.3.1'
 gem 'sass-rails', '~> 5.0'
 
 gem 'chartkick'
+gem 'groupdate'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -47,6 +48,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'pry'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
 
