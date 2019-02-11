@@ -2,5 +2,7 @@
 <p class="has-text-centered">
   <%= "Total spending to date: #{number_to_currency(@overall_sum)}" %>
 </p>
+<h3 class="title has-text-centered is-size-4">By category</h3>
 <%= pie_chart @totals, donut: true, legend: true, library: {legend: {position: "bottom"}, tooltips: {mode: 'label'}}  %>
+<h3 class="title has-text-centered is-size-4 line-spacing-top">Monthly by category</h3>
 <%= column_chart @category_totals_by_month, stacked: true, library: {legend: {position: "bottom"}} %>
