@@ -54,50 +54,60 @@ if User.none?
 end
 
 if Purchase.none?
-  Purchase.create(date: '2018-11-15', description: 'Avocado', amount: 4.5, payee: 'Evil Dairy',
+  Purchase.create(date: 1.month.ago, description: 'Avocado', amount: 4.5, payee: 'Evil Dairy',
                   purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Food - snacks'))
-  Purchase.create(date: '2018-11-14', description: 'Cup of soup', amount: 3.0, payee: 'Patels',
+  Purchase.create(date: 1.month.ago(1.days.ago), description: 'Cup of soup', amount: 3.0, payee: 'Patels',
                   purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Food - snacks'))
-  Purchase.create(date: '2018-11-18', description: 'Chocolate', amount: 6.30, payee: 'Shalimar',
+  Purchase.create(date: 1.month.ago(1.days.since), description: 'Chocolate', amount: 6.30, payee: 'Shalimar',
                   purchaser: User.first, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Food - snacks'))
-  Purchase.create(date: '2018-11-09', description: 'Tamarillo', amount: 2.0, payee: 'Fruit shoppe',
+  Purchase.create(date: 1.month.ago(6.days.ago), description: 'Tamarillo', amount: 2.0, payee: 'Fruit shoppe',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Food - snacks'))
-  Purchase.create(date: '2018-11-22', description: 'Socks', amount: 18.99, payee: 'Farmers',
+  Purchase.create(date: 1.month.ago(1.weeks.since), description: 'Socks', amount: 18.99, payee: 'Farmers',
                   purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Clothing'))
-  Purchase.create(date: '2018-11-09', description: 'Snapper top-up', amount: 20.0, payee: 'Evil Dairy',
+  Purchase.create(date: 1.month.ago(6.days.ago), description: 'Snapper top-up', amount: 20.0, payee: 'Evil Dairy',
                   purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Public transport'))
-  Purchase.create(date: '2018-11-22', description: 'Summer hat', amount: 23.00, payee: 'Paperbag Princess',
+  Purchase.create(date: 1.month.ago(1.weeks.since), description: 'Summer hat', amount: 23.00, payee: 'Paperbag Princess',
                   purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Clothing'))
-  Purchase.create(date: '2019-01-05', description: 'Mandy tickets', amount: 26.00, payee: 'Lighthouse Cuba',
+  Purchase.create(date: 1.week.ago, description: 'Mandy tickets', amount: 26.00, payee: 'Lighthouse Cuba',
                   purchaser: User.first, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Movie ticket'))
-  Purchase.create(date: '2019-01-08', description: 'Beer beer', amount: 8.00, payee: 'Garage Project',
+  Purchase.create(date: 6.days.ago, description: 'Beer beer', amount: 8.00, payee: 'Garage Project',
                   purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Alcohol'))
-  Purchase.create(date: '2019-01-10', description: 'Hot choco', amount: 5.00, payee: 'Scopa',
+  Purchase.create(date: 3.days.ago, description: 'Hot choco', amount: 5.00, payee: 'Scopa',
                   purchaser: User.first, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Cafe/coffee'))
-  Purchase.create(date: '2018-12-28', description: 'File folder', amount: 4.70, payee: 'Warehouse Stationary',
+  Purchase.create(date: 3.weeks.ago, description: 'File folder', amount: 4.70, payee: 'Warehouse Stationary',
                   purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Actual misc'))
-  Purchase.create(date: '2018-10-13', description: 'Koha door charge', amount: 2.00, payee: 'Upoko Alpine Resort',
+  Purchase.create(date: 2.months.ago, description: 'Koha door charge', amount: 2.00, payee: 'Upoko Alpine Resort',
                   purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Gig/event ticket'))
-  Purchase.create(date: '2018-10-13', description: 'Cassette', amount: 10.00, payee: 'fruit juice parade',
+  Purchase.create(date: 2.months.ago(1.days.since), description: 'Cassette', amount: 10.00, payee: 'fruit juice parade',
                   purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Books/records/etc'))
-  Purchase.create(date: '2018-08-25', description: 'Book at book launch', amount: 20.00, payee: 'Lawrence & Gibson',
+  Purchase.create(date: 4.months.ago, description: 'Book at book launch', amount: 20.00, payee: 'Lawrence & Gibson',
                   purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Books/records/etc'))
-  Purchase.create(date: '2018-08-21', description: 'Rent', amount: 320.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 4.months.ago(5.days.ago), description: 'Rent', amount: 70.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Rent'))
-  Purchase.create(date: '2018-08-21', description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 4.months.ago, description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Household expenses'))
-  Purchase.create(date: '2018-08-21', description: 'Food - flat', amount: 100.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 4.months.ago, description: 'Food - flat', amount: 40.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Food - flat'))
-  Purchase.create(date: '2018-08-14', description: 'Rent', amount: 320.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 3.months.ago, description: 'Rent', amount: 70.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Rent'))
-  Purchase.create(date: '2018-08-14', description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 3.months.ago, description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Household expenses'))
-  Purchase.create(date: '2018-08-14', description: 'Food - flat', amount: 100.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 2.months.ago, description: 'Food - flat', amount: 40.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Food - flat'))
-  Purchase.create(date: '2018-08-28', description: 'Rent', amount: 320.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 2.months.ago, description: 'Rent', amount: 70.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Rent'))
-  Purchase.create(date: '2018-08-28', description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 1.months.ago, description: 'Household expenses', amount: 50.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Household expenses'))
-  Purchase.create(date: '2018-08-28', description: 'Food - flat', amount: 100.00, payee: '9 Holloway Rd',
+  Purchase.create(date: 1.months.ago, description: 'Food - flat', amount: 40.00, payee: '9 Holloway Rd',
                   purchaser: User.second, purchasee: User.third, subcategory: Subcategory.find_by(name: 'Food - flat'))
+  Purchase.create(date: 3.months.ago, description: 'Plane ticket', amount: 70.00, payee: 'Jetstar',
+                  purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Flights'))
+  Purchase.create(date: 3.months.ago, description: 'Package to France', amount: 33.00, payee: 'NZ Post',
+                  purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Postage'))
+  Purchase.create(date: 4.months.ago, description: 'Dental checkup', amount: 85.00, payee: 'Tooths R Us',
+                  purchaser: User.second, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Dentist'))
+  Purchase.create(date: 1.week.ago, description: 'Gym membership', amount: 40.00, payee: 'Sweat It Out',
+                  purchaser: User.second, purchasee: User.first, subcategory: Subcategory.find_by(name: 'Gym'))
+  Purchase.create(date: 2.months.ago, description: 'Blue suede shoes', amount: 60.00, payee: 'Tread City',
+                  purchaser: User.second, purchasee: User.second, subcategory: Subcategory.find_by(name: 'Shoes'))
 end
