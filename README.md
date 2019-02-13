@@ -1,6 +1,18 @@
-# [Budget Tracker](https://budget-tracker-rails.herokuapp.com/) - ⚠ WIP ⚠
+# [Budget Tracker](https://budget-tracker-rails.herokuapp.com/)
 
 A simple budget tracker using Rails.
+
+This was a "post-tutorial" project that began simply and slowly accumulated functionality.
+
+- Refactoring and Git workflow
+- Custom routing and controller logic
+- Testing with RSpec
+- Styling with Bulma and FontAwesome
+- Simple charts using Chartkick, and creating service methods to format the data appropriately.
+
+### Potential extensions:
+
+- Using Devise to add users/logins.
 
 ### To run locally
 
